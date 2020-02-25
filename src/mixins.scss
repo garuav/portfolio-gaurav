@@ -1,0 +1,8 @@
+@mixin flex {
+  display: flex;
+}
+@mixin flex-verticle-horizontal-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
