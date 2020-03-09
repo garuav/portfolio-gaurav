@@ -5,4 +5,10 @@
   <div class="routed-page" [@routeAnimations]="prepareRoute(outlet)">
     <router-outlet #outlet="outlet"></router-outlet>
   </div>
+  <!-- <div class="project-view" *ngIf="tabsData">
+    <app-project-view-modal
+      [tabsData]="tabsData"
+      (projectViewEvents)="projectViewEvents($event)"
+    ></app-project-view-modal>
+  </div> -->
 </div>

@@ -1,0 +1,11 @@
+<div class="tabs-window">
+  <nav ngbNav #nav="ngbNav" class="nav-tabs">
+    <ng-container ngbNavItem *ngFor="let tab of tabsList">
+      <a ngbNavLink>{{ tab?.project_name }}</a>
+      <a ngbNavLink class="close-window" (click)="closeModal()"
+        ><i class="fa fa-times"></i
+      ></a>
+      <ng-template ngbNavContent>{{ tab?.project_name }} </ng-template>
+    </ng-container>
+  </nav>
+</div>

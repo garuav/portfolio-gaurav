@@ -13,6 +13,9 @@ import { ProjectsListComponent } from './projects-list/projects-list.component';
 import { PreviousEmployerListComponent } from './previous-employer-list/previous-employer-list.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ProjectsWorkedComponent } from './projects-worked/projects-worked.component';
+import { AboutComponent } from './about/about.component';
+import { ProjectDataRefDirective } from './projects-worked/project-data-ref.directive';
+import { ProjectViewModalComponent } from './project-view-modal/project-view-modal.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,9 @@ import { ProjectsWorkedComponent } from './projects-worked/projects-worked.compo
     PreviousEmployerListComponent,
     SidebarComponent,
     ProjectsWorkedComponent,
+    AboutComponent,
+    ProjectDataRefDirective,
+    ProjectViewModalComponent,
   ],
   imports: [
     BrowserModule,

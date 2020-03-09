@@ -5,4 +5,5 @@ export interface ProjectData {
   images: string;
   url: string;
   language_framework: string;
+  isTabSelected?: boolean;
 }

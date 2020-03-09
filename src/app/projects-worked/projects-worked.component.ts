@@ -1,15 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ComponentFactoryResolver,
+  AfterViewInit,
+  AfterContentInit,
+  Renderer2,
+} from '@angular/core';
 import { ProjectData } from '../common/project-data';
+import { ProjectsListComponent } from '../projects-list/projects-list.component';
+import { ProjectDataRefDirective } from './project-data-ref.directive';
 
 @Component({
   selector: 'app-projects-worked',
   templateUrl: './projects-worked.component.html',
   styleUrls: ['./projects-worked.component.scss'],
 })
-export class ProjectsWorkedComponent implements OnInit {
+export class ProjectsWorkedComponent implements OnInit, AfterContentInit {
   projectsData: ProjectData[];
-  constructor() {}
 
+  constructor(
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private renderer: Renderer2
+  ) {}
+  @ViewChild(ProjectDataRefDirective, { static: true })
+  projectListRef: ProjectDataRefDirective;
   ngOnInit(): void {
     this.projectsData = [
       {
@@ -80,5 +95,28 @@ The HUNDŌ Exchange enables users to buy or
         images: 'assets/project-images/whatmate.png',
       },
     ];
+  }
+  ngAfterContentInit() {
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
+      ProjectsListComponent
+    );
+
+    const viewContainerRef = this.projectListRef.viewContainerRef;
+    viewContainerRef.clear();
+    this.projectsData.forEach(element => {
+      this.loadComponent(element, componentFactory, viewContainerRef);
+    });
+  }
+  loadComponent(data, componentFactory, viewContainerRef) {
+    console.log(data);
+    setTimeout(() => {
+      const componentRef = viewContainerRef.createComponent(componentFactory);
+      this.renderer.addClass(
+        componentRef.location.nativeElement,
+        'project-card' + data.project_id
+      );
+
+      (componentRef.instance as ProjectsListComponent).projectData = data;
+    }, 500);
   }
 }

@@ -1,21 +1,50 @@
+import { ProjectViewModalComponent } from './../project-view-modal/project-view-modal.component';
 import { CommonService } from './../services/common.service';
 import { ProjectData } from './../common/project-data';
-import { Component, OnInit, Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  ElementRef,
+  Renderer2,
+  AfterViewInit,
+} from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-projects-list',
   templateUrl: './projects-list.component.html',
   styleUrls: ['./projects-list.component.scss'],
 })
-export class ProjectsListComponent implements OnInit {
+export class ProjectsListComponent implements OnInit, AfterViewInit {
   // tslint:disable-next-line:no-input-rename
-  @Input('projectsList') projectsList: ProjectData;
-  constructor(private commonService: CommonService) {}
+  @Input('projectData') projectData: ProjectData;
+  constructor(
+    private commonService: CommonService,
+    private el: ElementRef,
+    private renderer: Renderer2,
+    private modalService: NgbModal
+  ) {}
 
   ngOnInit(): void {
-    console.log('this.projectsList = ', this.projectsList);
-    this.commonService.animateCSS('.project-card', 'bounce', () => {
-      // Do something after animation
-    });
+    console.log('this.projectData = ', this.projectData);
+    this.renderer.addClass(
+      this.el.nativeElement,
+      'project-card' + this.projectData.project_id
+    );
+  }
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.commonService.animateCSS(
+        '.project-card' + this.projectData.project_id,
+        'zoomIn',
+        () => {
+          // Do something after animation
+        }
+      );
+    }, 1000);
+  }
+  openTab(openTab) {
+    this.commonService.addTabsObservable(openTab);
   }
 }

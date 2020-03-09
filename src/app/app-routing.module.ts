@@ -1,3 +1,4 @@
+import { AboutComponent } from './about/about.component';
 import { ChatPageComponent } from './chat-page/chat-page.component';
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
@@ -28,6 +29,11 @@ const routes: Routes = [
   {
     path: 'projects',
     component: ProjectsWorkedComponent,
+    data: { animation: 'isRight' },
+  },
+  {
+    path: 'about',
+    component: AboutComponent,
     data: { animation: 'isRight' },
   },
 ];
