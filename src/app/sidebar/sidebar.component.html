@@ -1,0 +1,26 @@
+<div class="sidebar">
+  <div class="user-data">
+    <i class="fa fa-user-circle"></i>
+    <h5>Gaurav Bhatt</h5>
+    <h6>Front End Developer</h6>
+  </div>
+  <div class="pages-name">
+    <a routerLink="home" [routerLinkActive]="['active']">
+      <i class="fa fa-home"></i>
+      Home
+      <span class="sr-only">(current)</span>
+    </a>
+
+    <a routerLink="skills" [routerLinkActive]="['active']">
+      <i class="fa fa-list"></i>
+      Skills
+      <span class="sr-only">(current)</span>
+    </a>
+    <a routerLink="projects" [routerLinkActive]="['active']">
+      <i class="fa fa-list"></i>
+      Projects
+      <span class="sr-only">(current)</span>
+    </a>
+    <a (click)="navigateTo('login')" [routerLinkActive]="['active']">Login</a>
+  </div>
+</div>

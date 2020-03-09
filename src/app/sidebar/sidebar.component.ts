@@ -2,15 +2,14 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CommonService } from '../services/common.service';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
+  selector: 'app-sidebar',
+  templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class SidebarComponent implements OnInit {
   // tslint:disable-next-line:no-output-rename
-  @Output() headerOutputEvents = new EventEmitter();
+  @Output() sidebarOutputEvents = new EventEmitter();
   loginData;
-
   constructor(private commonService: CommonService) {}
 
   ngOnInit(): void {}
@@ -19,7 +18,7 @@ export class HeaderComponent implements OnInit {
       case 'login':
         this.loginData = this.commonService.getLocalStorageObj('LoginUserData');
 
-        this.headerOutputEvents.emit('login');
+        this.sidebarOutputEvents.emit('login');
         break;
     }
   }

@@ -1,4 +1,17 @@
 .main-home-container {
-  background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+  // background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
   height: 100%;
+  text-align: center;
+  display: flex;
+  app-sidebar {
+    flex-direction: column;
+    flex-basis: 20%;
+  }
+  .routed-page {
+    flex-basis: 80%;
+    // flex-basis: 80%;
+    position: relative;
+    background: #dad9d9;
+    overflow-y: auto;
+  }
 }

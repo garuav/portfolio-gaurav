@@ -1,0 +1,13 @@
+<div class="card project-card ">
+  <div class="card-header">
+    <h5 class="card-title">{{ projectsList.project_name }}</h5>
+  </div>
+  <img src="{{ projectsList.images }}" class="card-img" alt="" />
+  <div class="card-body">
+    <p class="card-text" [innerHtml]="projectsList.project_description"></p>
+    <h6 class="skills">{{ projectsList.language_framework }}</h6>
+  </div>
+  <div class="card-footer">
+    <a href="{{ projectsList.url }}">Visit Website</a>
+  </div>
+</div>
