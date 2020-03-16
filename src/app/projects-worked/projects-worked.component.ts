@@ -110,7 +110,7 @@ The HUNDŌ Exchange enables users to buy or
     this.projectsData.forEach(element => {
       setTimeout(() => {
         this.loadComponent(element, componentFactory, viewContainerRef);
-      }, 7000);
+      }, 500);
     });
   }
   loadComponent(data, componentFactory, viewContainerRef) {

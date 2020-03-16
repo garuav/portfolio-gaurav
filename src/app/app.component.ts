@@ -1,5 +1,10 @@
 import { ProjectViewModalComponent } from './project-view-modal/project-view-modal.component';
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectorRef,
+  AfterViewInit,
+} from '@angular/core';
 import * as firebase from 'firebase';
 import { firebaseInit } from '../common.constants';
 import { RouterOutlet } from '@angular/router';
@@ -14,13 +19,15 @@ import { LoginComponent } from './login/login.component';
   styleUrls: ['./app.component.scss'],
   animations: [fade],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   loginData: any;
   tabsData;
   projectViewModalRef;
+  isPageLoading: boolean;
   constructor(
     private modalService: NgbModal,
-    private commonService: CommonService
+    private commonService: CommonService,
+    private cdr: ChangeDetectorRef
   ) {
     this.commonService.getTabsSubscribe().subscribe(tab => {
       console.log('tab = ', tab);
@@ -45,7 +52,15 @@ export class AppComponent implements OnInit {
     });
   }
   ngOnInit() {
+    this.isPageLoading = true;
     this.initFirebase();
+  }
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.isPageLoading = false;
+      this.cdr.detectChanges();
+    }, 2000);
   }
   initFirebase() {
     firebase.initializeApp(firebaseInit);
@@ -55,7 +70,7 @@ export class AppComponent implements OnInit {
       outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation
     );
   }
-  sidebarOutputEvents(event) {
+  headerOutputEvents(event) {
     console.log('event = ', event);
     if (event && event === 'login') {
       this.loginData = this.commonService.getLocalStorageObj('loginUserData');

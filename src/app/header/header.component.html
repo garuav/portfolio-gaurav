@@ -1,26 +1,25 @@
-<div class="sidebar">
-  <div class="user-data">
-    <i class="fa fa-user-circle"></i>
+<nav class="header">
+  <div class="banner">
     <h5>Gaurav Bhatt</h5>
     <h6>Front End Developer</h6>
   </div>
-  <div class="pages-name">
+  <div class="nav-links">
     <a routerLink="home" [routerLinkActive]="['active']">
-      <i class="fa fa-home"></i>
+      <!--  <i class="fa fa-home"></i>  -->
       Home
       <span class="sr-only">(current)</span>
     </a>
 
     <a routerLink="projects" [routerLinkActive]="['active']">
-      <i class="fa fa-list"></i>
+      <!--  <i class="fa fa-list"></i>  -->
       Projects
       <span class="sr-only">(current)</span>
     </a>
     <a routerLink="about" [routerLinkActive]="['active']">
-      <i class="fa fa-list"></i>
+      <!--   <i class="fa fa-list"></i> -->
       About
       <span class="sr-only">(current)</span>
     </a>
     <a (click)="navigateTo('login')" [routerLinkActive]="['active']">Login</a>
   </div>
-</div>
+</nav>

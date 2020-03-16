@@ -1,14 +1,22 @@
-<div class="container-fluid p-0 main-home-container">
-  <app-sidebar
-    (sidebarOutputEvents)="sidebarOutputEvents($event)"
-  ></app-sidebar>
-  <div class="routed-page" [@routeAnimations]="prepareRoute(outlet)">
-    <router-outlet #outlet="outlet"></router-outlet>
+<ng-container *ngIf="isPageLoading; else MainPageBlock">
+  <div class="container-fluid p-0 loader-page">
+    <div class="bar">
+      <div class="circle"></div>
+      <p>Loading</p>
+    </div>
   </div>
-  <!-- <div class="project-view" *ngIf="tabsData">
-    <app-project-view-modal
-      [tabsData]="tabsData"
-      (projectViewEvents)="projectViewEvents($event)"
-    ></app-project-view-modal>
-  </div> -->
-</div>
+</ng-container>
+<ng-template #MainPageBlock>
+  <div class="container-fluid p-0 main-home-container">
+    <app-header (headerOutputEvents)="headerOutputEvents($event)"></app-header>
+    <div class="routed-page" [@routeAnimations]="prepareRoute(outlet)">
+      <router-outlet #outlet="outlet"></router-outlet>
+    </div>
+    <!-- <div class="project-view" *ngIf="tabsData">
+      <app-project-view-modal
+        [tabsData]="tabsData"
+        (projectViewEvents)="projectViewEvents($event)"
+      ></app-project-view-modal>
+    </div> -->
+  </div>
+</ng-template>

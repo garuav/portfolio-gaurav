@@ -4,10 +4,10 @@ html,
 body {
   height: 100%;
   margin: 0px;
-  router-outlet + * {
-    // flex-basis: 80%;
-    // position: relative;
-  }
+  background: #347fc3 !important;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 // setting nunito fonts for app
 @font-face {
