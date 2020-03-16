@@ -1,3 +1,4 @@
+import { CommonService } from './../services/common.service';
 import {
   Component,
   OnInit,
@@ -6,6 +7,7 @@ import {
   AfterViewInit,
   AfterContentInit,
   Renderer2,
+  ChangeDetectorRef,
 } from '@angular/core';
 import { ProjectData } from '../common/project-data';
 import { ProjectsListComponent } from '../projects-list/projects-list.component';
@@ -21,7 +23,9 @@ export class ProjectsWorkedComponent implements OnInit, AfterContentInit {
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private commonService: CommonService,
+    private cdr: ChangeDetectorRef
   ) {}
   @ViewChild(ProjectDataRefDirective, { static: true })
   projectListRef: ProjectDataRefDirective;
@@ -35,7 +39,7 @@ The HUNDŌ Exchange enables users to buy or
  sell shares in a variety of sporting events.
   Tickers range from a team winning a single game,
    division or league championship, to an individual player winning an award like MVP or Rookie of the Year.`,
-        url: '',
+        url: 'https://www.hundoexchange.com/',
         language_framework: 'Angular 6, Ionic Framework, CSS3',
 
         images: 'assets/project-images/hundoexchange.png',
@@ -104,19 +108,27 @@ The HUNDŌ Exchange enables users to buy or
     const viewContainerRef = this.projectListRef.viewContainerRef;
     viewContainerRef.clear();
     this.projectsData.forEach(element => {
-      this.loadComponent(element, componentFactory, viewContainerRef);
+      setTimeout(() => {
+        this.loadComponent(element, componentFactory, viewContainerRef);
+      }, 7000);
     });
   }
   loadComponent(data, componentFactory, viewContainerRef) {
-    console.log(data);
-    setTimeout(() => {
-      const componentRef = viewContainerRef.createComponent(componentFactory);
-      this.renderer.addClass(
-        componentRef.location.nativeElement,
-        'project-card' + data.project_id
-      );
+    // console.log(data);
+    const componentRef = viewContainerRef.createComponent(componentFactory);
 
-      (componentRef.instance as ProjectsListComponent).projectData = data;
-    }, 500);
+    this.renderer.addClass(
+      componentRef.location.nativeElement,
+      'project-card' + data.project_id
+    );
+    this.commonService.animateCSS(
+      '.project-card' + data.project_id,
+      'rollIn',
+      () => {
+        // Do something after animation
+      }
+    );
+    (componentRef.instance as ProjectsListComponent).projectData = data;
+    this.cdr.detectChanges();
   }
 }

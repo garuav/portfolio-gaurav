@@ -8,6 +8,7 @@ import {
   ElementRef,
   Renderer2,
   AfterViewInit,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -15,6 +16,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   selector: 'app-projects-list',
   templateUrl: './projects-list.component.html',
   styleUrls: ['./projects-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectsListComponent implements OnInit, AfterViewInit {
   // tslint:disable-next-line:no-input-rename
@@ -34,15 +36,15 @@ export class ProjectsListComponent implements OnInit, AfterViewInit {
     );
   }
   ngAfterViewInit() {
-    setTimeout(() => {
-      this.commonService.animateCSS(
-        '.project-card' + this.projectData.project_id,
-        'zoomIn',
-        () => {
-          // Do something after animation
-        }
-      );
-    }, 1000);
+    // setTimeout(() => {
+    //   this.commonService.animateCSS(
+    //     '.project-card' + this.projectData.project_id,
+    //     'zoomIn',
+    //     () => {
+    //       // Do something after animation
+    //     }
+    //   );
+    // }, 1000);
   }
   openTab(openTab) {
     this.commonService.addTabsObservable(openTab);

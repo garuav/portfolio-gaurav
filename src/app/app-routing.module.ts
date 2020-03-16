@@ -3,7 +3,6 @@ import { ChatPageComponent } from './chat-page/chat-page.component';
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SkillsComponent } from './skills/skills.component';
 import { ProjectsWorkedComponent } from './projects-worked/projects-worked.component';
 
 const routes: Routes = [
@@ -21,11 +20,7 @@ const routes: Routes = [
     path: 'chat',
     component: ChatPageComponent,
   },
-  {
-    path: 'skills',
-    component: SkillsComponent,
-    data: { animation: 'isLeft' },
-  },
+
   {
     path: 'projects',
     component: ProjectsWorkedComponent,

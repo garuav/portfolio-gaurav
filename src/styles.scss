@@ -49,3 +49,17 @@ body {
 * {
   font-family: 'Nunito-Regular';
 }
+
+.project-view-modal {
+  .modal-dialog {
+    height: 100%;
+
+    .modal-content {
+      height: 100%;
+    }
+  }
+
+  app-project-view-modal {
+    height: 100%;
+  }
+}
