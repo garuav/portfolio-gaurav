@@ -36,18 +36,14 @@ export class CommonService {
         const token = result.credential.accessToken;
         // The signed-in user info.
         const user = result.user;
-        const userData = {
-          token,
-          ...user,
+        const temp: any = {
+          displayName: user.displayName,
+          email: user.email,
+          photoURL: user.photoURL,
+          token: user.token,
         };
-        console.log('userData = ', userData);
-
-        const temp: string = JSON.stringify(userData);
-        console.log('temp = ', temp);
-
-        localStorage.setItem('loginUserData', userData);
-        // this.setLocalStorageObj('loginUserData', userData);
-        return userData;
+        this.setLocalStorageObj('loginUserData', temp);
+        return temp;
       })
       .catch(error => {
         // Handle Errors here.
