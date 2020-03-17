@@ -1,14 +1,15 @@
 import { ProjectData } from './../common/project-data';
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
-import { Subject, Observable } from 'node_modules/rxjs';
+import { Subject, Observable, BehaviorSubject } from 'node_modules/rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CommonService {
   projectViewTabs: ProjectData[];
-
+  private loginLogoutSubject = new Subject<boolean>();
+  loginLogoutSubjectObservable = this.loginLogoutSubject.asObservable();
   private isProjectViewVisible = new Subject();
   private addTabsSubject = new Subject();
   addTabsSubjectObservable(tabData: ProjectData) {
@@ -25,7 +26,7 @@ export class CommonService {
   }
   constructor() {}
 
-  googleLogin(): any {
+  googleLogin() {
     const provider = new firebase.auth.GoogleAuthProvider();
     console.log('provider= ', provider);
     firebase
@@ -43,7 +44,8 @@ export class CommonService {
           token: user.token,
         };
         this.setLocalStorageObj('loginUserData', temp);
-        return temp;
+        this.loginLogoutEvents(true);
+        this.saveUser(temp);
       })
       .catch(error => {
         // Handle Errors here.
@@ -54,7 +56,6 @@ export class CommonService {
         // The firebase.auth.AuthCredential type that was used.
         const credential = error.credential;
         // ...
-        return error;
       });
   }
 
@@ -112,4 +113,31 @@ export class CommonService {
     return this.projectViewTabs;
   }
   // tabs CRUD end
+
+  // firebase save data to DB--start
+  saveUser(loginData) {
+    // const ref = firebase.database().ref('users');
+    // ref
+    //   .orderByChild('email')
+    //   .equalTo(loginData.email)
+    //   .on('child_added', snapshot => {
+    //     console.log(snapshot.key);
+    //   });
+    firebase
+      .database()
+      .ref('users')
+      .push(loginData, res => {
+        console.log('res = ', res);
+      })
+      .then(res => {
+        console.log('res = ', res);
+      })
+      .catch(error => {
+        console.log('error = ', error);
+      });
+  }
+  // firebase save data to DB--end
+  loginLogoutEvents(isLoggedin: boolean) {
+    this.loginLogoutSubject.next(isLoggedin);
+  }
 }

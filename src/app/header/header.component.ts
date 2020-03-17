@@ -7,18 +7,38 @@ import { CommonService } from '../services/common.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  loggedInUserData: any;
   @Output() headerOutputEvents = new EventEmitter();
-  loginData;
-  constructor(private commonService: CommonService) {}
+  constructor(private commonService: CommonService) {
+    this.commonService.loginLogoutSubjectObservable.subscribe(res => {
+      console.log('isLogin = ', res);
+      if (res) {
+        this.getCheckLoggedInUser();
+      }
+    });
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getCheckLoggedInUser();
+  }
+  getCheckLoggedInUser() {
+    if (this.commonService.getLocalStorageObj('loginUserData')) {
+      this.loggedInUserData = this.commonService.getLocalStorageObj(
+        'loginUserData'
+      );
+    }
+  }
   navigateTo(page: string) {
     switch (page) {
       case 'login':
-        this.loginData = this.commonService.getLocalStorageObj('LoginUserData');
+        // this.loginData = this.commonService.getLocalStorageObj('LoginUserData');
 
         this.headerOutputEvents.emit('login');
         break;
     }
+  }
+  logoutUser() {
+    localStorage.clear();
+    this.loggedInUserData = undefined;
   }
 }

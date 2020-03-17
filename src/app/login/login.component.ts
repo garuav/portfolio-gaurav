@@ -12,7 +12,13 @@ export class LoginComponent implements OnInit {
   constructor(
     public activeModal: NgbActiveModal,
     private commonService: CommonService
-  ) {}
+  ) {
+    this.commonService.loginLogoutSubjectObservable.subscribe(res => {
+      if (res) {
+        this.activeModal.close('Successfully Logged In');
+      }
+    });
+  }
 
   ngOnInit(): void {
     console.log('this.activeMiodal = ', this.activeModal);
@@ -24,8 +30,7 @@ export class LoginComponent implements OnInit {
         break;
     }
   }
-  async googleLogin() {
-    const res = await this.commonService.googleLogin();
-    console.log(res);
+  googleLogin() {
+    this.commonService.googleLogin();
   }
 }

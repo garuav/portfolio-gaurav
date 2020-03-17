@@ -1,3 +1,5 @@
+$blue: #0eb7da;
+
 .header {
   display: flex;
   justify-content: center;
@@ -26,11 +28,45 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    padding-right: 1rem;
     a {
       font-family: 'Nunuto-ExtraBold';
       text-decoration: none;
       color: #ffffff;
       margin: 0 0.5rem;
+    }
+  }
+  .logged-in-user {
+    border: 2px solid #d07575;
+    border-radius: 50%;
+    padding: 0.25rem;
+    img {
+      width: 2rem;
+      border-radius: 50%;
+    }
+    .dropdown-menu {
+      background: #848582;
+      .user-name {
+        border-bottom: 1px solid #cdcdcd;
+
+        h5,
+        h4 {
+          padding: 0 0.5rem;
+          font-family: 'Nunito-SemiBold';
+          margin: 0;
+          font-size: 1rem;
+          text-align: center;
+          color: #ffffff;
+        }
+      }
+      .dropdown-item {
+        padding: 0.5rem;
+        font-family: 'Nunito-SemiBold';
+        color: #ffffff;
+        &:hover {
+          background: #6e7777;
+        }
+      }
     }
   }
 }
