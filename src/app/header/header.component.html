@@ -1,49 +1,79 @@
-<nav class="header">
-  <div class="banner">
+<nav class="header navbar navbar-expand-lg">
+  <div class="banner navbar-brand">
     <h5>Gaurav Bhatt</h5>
     <h6>Front End Developer</h6>
   </div>
-  <div class="nav-links">
-    <a routerLink="home" [routerLinkActive]="['active']">
-      <!--  <i class="fa fa-home"></i>  -->
-      Home
-      <span class="sr-only">(current)</span>
-    </a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    (click)="navBarCollapsed = !navBarCollapsed"
+  >
+    <i class="fa fa-bars"></i>
+  </button>
+  <div
+    class="collapse navbar-collapse nav-links"
+    [ngClass]="{ collapse: navBarCollapsed, 'navbar-collapse': true }"
+  >
+    <div class="navbar-nav">
+      <!--  <div class="nav-links">  -->
+      <a
+        class="nav-item nav-link "
+        routerLink="home"
+        [routerLinkActive]="['active']"
+      >
+        <!--  <i class="fa fa-home"></i>  -->
+        Home
+        <span class="sr-only">(current)</span>
+      </a>
 
-    <a routerLink="projects" [routerLinkActive]="['active']">
-      <!--  <i class="fa fa-list"></i>  -->
-      Projects
-      <span class="sr-only">(current)</span>
-    </a>
-    <a routerLink="about" [routerLinkActive]="['active']">
-      <!--   <i class="fa fa-list"></i> -->
-      About
-      <span class="sr-only">(current)</span>
-    </a>
-    <ng-container *ngIf="loggedInUserData; else LoginButtonBlock">
-      <div class="logged-in-user" ngbDropdown #myDrop="ngbDropdown">
-        <img
-          src="{{ loggedInUserData?.photoURL }}"
-          ngbDropdownToggle
-          (onmouseover)="$event.stopPropagation(); myDrop.open()"
-        />
-        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-          <div class="user-name">
-            <h5>Welcome</h5>
-            <h4>
-              {{ loggedInUserData?.displayName || 'Guest' }}
-            </h4>
+      <a
+        class="nav-item nav-link "
+        routerLink="projects"
+        [routerLinkActive]="['active']"
+      >
+        <!--  <i class="fa fa-list"></i>  -->
+        Projects
+        <span class="sr-only">(current)</span>
+      </a>
+      <a
+        class="nav-item nav-link "
+        routerLink="about"
+        [routerLinkActive]="['active']"
+      >
+        <!--   <i class="fa fa-list"></i> -->
+        About
+        <span class="sr-only">(current)</span>
+      </a>
+      <ng-container *ngIf="loggedInUserData; else LoginButtonBlock">
+        <div class="logged-in-user" ngbDropdown #myDrop="ngbDropdown">
+          <img
+            src="{{ loggedInUserData?.photoURL }}"
+            ngbDropdownToggle
+            (onmouseover)="$event.stopPropagation(); myDrop.open()"
+          />
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <div class="user-name">
+              <h5>Welcome</h5>
+              <h4>
+                {{ loggedInUserData?.displayName || 'Guest' }}
+              </h4>
+            </div>
+
+            <button ngbDropdownItem>Chat Page</button>
+            <button ngbDropdownItem (click)="logoutUser()">Logout</button>
           </div>
-
-          <button ngbDropdownItem>Chat Page</button>
-          <button ngbDropdownItem (click)="logoutUser()">Logout</button>
         </div>
-      </div>
 
-      <!-- <a (click)="navigateTo('login')">Login</a> -->
-    </ng-container>
-    <ng-template #LoginButtonBlock>
-      <a (click)="navigateTo('login')" [routerLinkActive]="['active']">Login</a>
-    </ng-template>
+        <!-- <a (click)="navigateTo('login')">Login</a> -->
+      </ng-container>
+      <ng-template #LoginButtonBlock>
+        <a
+          class="nav-item nav-link "
+          (click)="navigateTo('login')"
+          [routerLinkActive]="['active']"
+          >Login</a
+        >
+      </ng-template>
+    </div>
   </div>
 </nav>

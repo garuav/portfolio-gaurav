@@ -3,11 +3,8 @@
   justify-content: center;
   align-items: center;
   height: 100%;
+  padding: 5rem;
   .about-me-block {
-    position: absolute;
-
-    width: 35%;
-    left: 5rem;
     h4 {
       font-family: 'Nunito-Black';
       color: #dacccc;
@@ -21,18 +18,12 @@
     }
   }
   .spinner-section {
-    position: absolute;
-    // left: 50%;
-    // margin-left: 120px;
-    // top: 50%;
-    // margin-top: -210px;
-    height: 500px;
-    // width: 100px;
-    width: 27%;
-    right: 0rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     transform-style: preserve-3d;
     animation: spin 10s linear infinite;
-    transform-origin: 116px 200px 116px;
+    // transform-origin: 116px 200px 116px;
 
     div {
       position: absolute;
@@ -92,7 +83,7 @@
         transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
       }
       to {
-        transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+        transform: rotateX(360deg) rotateY(0deg) rotateZ(360deg);
       }
     }
   }

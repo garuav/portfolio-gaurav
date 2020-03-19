@@ -8,6 +8,7 @@ import { CommonService } from '../services/common.service';
 })
 export class HeaderComponent implements OnInit {
   loggedInUserData: any;
+  navBarCollapsed: boolean;
   @Output() headerOutputEvents = new EventEmitter();
   constructor(private commonService: CommonService) {
     this.commonService.loginLogoutSubjectObservable.subscribe(res => {
@@ -20,6 +21,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCheckLoggedInUser();
+    this.navBarCollapsed = false;
   }
   getCheckLoggedInUser() {
     if (this.commonService.getLocalStorageObj('loginUserData')) {

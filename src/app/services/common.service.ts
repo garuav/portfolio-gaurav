@@ -1,7 +1,9 @@
 import { ProjectData } from './../common/project-data';
 import { Injectable } from '@angular/core';
-import * as firebase from 'firebase';
+import * as firebase from 'firebase/app';
 import { Subject, Observable, BehaviorSubject } from 'node_modules/rxjs';
+import 'firebase/database';
+import 'firebase/auth'; // for authentication
 
 @Injectable({
   providedIn: 'root',
@@ -41,7 +43,8 @@ export class CommonService {
           displayName: user.displayName,
           email: user.email,
           photoURL: user.photoURL,
-          token: user.token,
+          token,
+          uid: user.uid,
         };
         this.setLocalStorageObj('loginUserData', temp);
         this.loginLogoutEvents(true);
@@ -116,17 +119,20 @@ export class CommonService {
 
   // firebase save data to DB--start
   saveUser(loginData) {
-    // const ref = firebase.database().ref('users');
+    // const ref = firebase
+    //   .database()
+    //   .ref('https://portfolio-3881c.firebaseio.com/');
     // ref
     //   .orderByChild('email')
     //   .equalTo(loginData.email)
     //   .on('child_added', snapshot => {
     //     console.log(snapshot.key);
     //   });
+    console.log('loginData = ', loginData);
     firebase
       .database()
-      .ref('users')
-      .push(loginData, res => {
+      .refFromURL('https://portfolio-3881c.firebaseio.com/' + loginData.uid)
+      .set(loginData, res => {
         console.log('res = ', res);
       })
       .then(res => {
