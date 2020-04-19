@@ -17,6 +17,22 @@
     overflow-y: auto;
     height: 100%;
   }
+  .chat-page-icon{
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    background: #65a197;
+    height: 2.5rem;
+    width: 2.5rem;
+    text-align: center;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    i {
+      color: #ffffff;
+    }
+  }
 }
 .loader-page {
   height: 100%;
