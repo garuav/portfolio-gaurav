@@ -1,0 +1,26 @@
+.chat-page {
+    height: 85%;
+    background-color: #cdcdcd;
+    width: 25rem;
+    position: absolute;
+    right: 4rem;
+    bottom: 2rem;
+    border-radius: 5px;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-end;
+    .message-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        bottom: .4rem;
+        textarea {
+            width: 98%;
+            resize: none;
+            border-radius: 5px;
+            background: #dbd4d4;
+            border-color: #adaaaa;
+        }
+    }
+}

@@ -24,6 +24,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   tabsData;
   projectViewModalRef;
   isPageLoading: boolean;
+  showChatComponent: boolean;
   constructor(
     private modalService: NgbModal,
     private commonService: CommonService,
@@ -95,5 +96,23 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
   projectViewEvents(event) {
     console.log('event = ', event);
+  }
+  chatPage() {
+    this.loginData = this.commonService.getLocalStorageObj('loginUserData');
+    if (this.loginData) {
+      this.showChatComponent = !this.showChatComponent;
+    } else {
+      this.showChatComponent = false;
+      const loginModalRef = this.modalService.open(LoginComponent);
+      loginModalRef.result
+          .then(res => {
+            console.log('res = ', res);
+            this.showChatComponent = true;
+            // this.commonService.chatPageEvents(true);
+          })
+          .catch(err => {
+            console.log('err = ', err);
+          });
+    }
   }
 }

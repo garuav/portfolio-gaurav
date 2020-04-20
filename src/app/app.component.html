@@ -18,7 +18,10 @@
         (projectViewEvents)="projectViewEvents($event)"
       ></app-project-view-modal>
     </div> -->
-    <div class="chat-page-icon" routerLink="chat">
+    <ng-container *ngIf="showChatComponent">
+      <app-chat-page></app-chat-page>
+    </ng-container>
+    <div class="chat-page-icon" (click)="chatPage()">
       <i class="fa fa-comment"></i>
     </div>
   </div>

@@ -7,10 +7,9 @@ import { CommonService } from '../services/common.service';
   styleUrls: ['./chat-page.component.scss'],
 })
 export class ChatPageComponent implements OnInit {
-  isLoginData: any;
-  constructor(private commonService: CommonService) {}
+  constructor(private commonService: CommonService) {
+  }
 
   ngOnInit(): void {
-    this.isLoginData = this.commonService.getLocalStorageObj('LoginUserData');
   }
 }
