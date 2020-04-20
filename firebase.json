@@ -1,5 +1,16 @@
 {
-  "storage": {
-    "rules": "y"
+  "hosting": {
+    "public": "dist/portfolio-gaurav",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
   }
 }
