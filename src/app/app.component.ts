@@ -1,4 +1,3 @@
-import { ProjectViewModalComponent } from './project-view-modal/project-view-modal.component';
 import {
   Component,
   OnInit,
@@ -30,27 +29,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     private commonService: CommonService,
     private cdr: ChangeDetectorRef
   ) {
-    this.commonService.getTabsSubscribe().subscribe(tab => {
-      console.log('tab = ', tab);
-      this.tabsData = tab;
-      if (!this.projectViewModalRef) {
-        this.projectViewModalRef = this.modalService.open(
-          ProjectViewModalComponent,
-          { backdrop: 'static', windowClass: 'project-view-modal', size: 'xl' }
-        );
-        this.projectViewModalRef.componentInstance.tabsData = tab;
-        this.projectViewModalRef.result
-          .then(res => {
-            console.log('res = ', res);
-          })
-          .catch(err => {
-            console.log('err = ', err);
-            this.projectViewModalRef = undefined;
-          });
-      } else {
-        this.commonService.addTabsSubjectObservable(tab);
-      }
-    });
+    
   }
   ngOnInit() {
     this.isPageLoading = true;

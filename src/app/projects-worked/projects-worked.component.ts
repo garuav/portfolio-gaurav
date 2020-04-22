@@ -22,10 +22,6 @@ export class ProjectsWorkedComponent implements OnInit, AfterContentInit {
   projectsData: ProjectData[];
 
   constructor(
-    private componentFactoryResolver: ComponentFactoryResolver,
-    private renderer: Renderer2,
-    private commonService: CommonService,
-    private cdr: ChangeDetectorRef
   ) {}
   @ViewChild(ProjectDataRefDirective, { static: true })
   projectListRef: ProjectDataRefDirective;
@@ -101,34 +97,6 @@ The HUNDŌ Exchange enables users to buy or
     ];
   }
   ngAfterContentInit() {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
-      ProjectsListComponent
-    );
-
-    const viewContainerRef = this.projectListRef.viewContainerRef;
-    viewContainerRef.clear();
-    this.projectsData.forEach(element => {
-      setTimeout(() => {
-        this.loadComponent(element, componentFactory, viewContainerRef);
-      }, 500);
-    });
   }
-  loadComponent(data, componentFactory, viewContainerRef) {
-    // console.log(data);
-    const componentRef = viewContainerRef.createComponent(componentFactory);
 
-    this.renderer.addClass(
-      componentRef.location.nativeElement,
-      'project-card' + data.project_id
-    );
-    this.commonService.animateCSS(
-      '.project-card' + data.project_id,
-      'rollIn',
-      () => {
-        // Do something after animation
-      }
-    );
-    (componentRef.instance as ProjectsListComponent).projectData = data;
-    this.cdr.detectChanges();
-  }
 }

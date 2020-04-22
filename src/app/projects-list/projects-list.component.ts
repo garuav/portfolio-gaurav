@@ -1,4 +1,3 @@
-import { ProjectViewModalComponent } from './../project-view-modal/project-view-modal.component';
 import { CommonService } from './../services/common.service';
 import { ProjectData } from './../common/project-data';
 import {
@@ -47,6 +46,6 @@ export class ProjectsListComponent implements OnInit, AfterViewInit {
     // }, 1000);
   }
   openTab(openTab) {
-    this.commonService.addTabsObservable(openTab);
+    // this.commonService.addTabsObservable(openTab);
   }
 }
