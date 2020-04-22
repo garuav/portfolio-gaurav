@@ -1,17 +1,9 @@
-import { CommonService } from './../services/common.service';
 import {
   Component,
   OnInit,
-  ViewChild,
-  ComponentFactoryResolver,
-  AfterViewInit,
   AfterContentInit,
-  Renderer2,
-  ChangeDetectorRef,
 } from '@angular/core';
 import { ProjectData } from '../common/project-data';
-import { ProjectsListComponent } from '../projects-list/projects-list.component';
-import { ProjectDataRefDirective } from './project-data-ref.directive';
 
 @Component({
   selector: 'app-projects-worked',
@@ -23,8 +15,6 @@ export class ProjectsWorkedComponent implements OnInit, AfterContentInit {
 
   constructor(
   ) {}
-  @ViewChild(ProjectDataRefDirective, { static: true })
-  projectListRef: ProjectDataRefDirective;
   ngOnInit(): void {
     this.projectsData = [
       {

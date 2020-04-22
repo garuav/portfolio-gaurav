@@ -1,4 +1,17 @@
 <div class="projects-worked-on">
-  <app-projects-list [projectData]="item" *ngFor="let item of projectsData">
-  </app-projects-list>
+  <div class="card project-card "*ngFor="let item of projectsData" >
+    <div class="card-header">
+      <h5 class="card-title">{{ item.project_name }}</h5>
+    </div>
+    <img src="{{ item.images }}" class="card-img" alt="" />
+    <div class="card-body">
+      <p class="card-text" [innerHtml]="item.project_description"></p>
+      <h6 class="skills">{{ item.language_framework }}</h6>
+    </div>
+    <div class="card-footer">
+      <a href="{{ item.url }}">Visit Website</a>
+    </div>
+  </div>
+  <!-- <app-projects-list [projectData]="item" >
+  </app-projects-list> -->
 </div>
