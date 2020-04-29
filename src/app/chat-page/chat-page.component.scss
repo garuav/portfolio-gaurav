@@ -9,6 +9,61 @@
     display: flex;
     flex-flow: column;
     justify-content: flex-end;
+    overflow-y: auto;
+    .loading-msg{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: column;
+        height: 100%;
+        .loader {
+            border: .5rem solid #f3f3f3;
+            border-radius: 50%;
+            border-top: .5rem solid #3498db;
+            border-bottom: .5rem solid #3498db;
+            width: 3rem;
+            height: 3rem;
+            -webkit-animation: spin 2s linear infinite; /* Safari */
+            animation: spin 2s linear infinite;
+          }
+        h5 {
+            margin: 1rem 0;
+        }
+          /* Safari */
+          @-webkit-keyframes spin {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+          }
+          
+          @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+    }
+    .messages-list{
+        height: 100%;
+        overflow-y: scroll;
+        .chat-msg-box{
+            &.own-msg {
+                margin: .5rem;
+                min-height: 3rem;
+                padding: .5rem;
+                display: flex;
+                border: 2px solid #c47d61;
+                border-radius: 10px;
+            }
+            &.admin-msg{
+                margin: .5rem;
+                min-height: 3rem;
+                padding: .5rem;
+                display: flex;
+                border: 2px solid #c47d61;
+                border-radius: 10px;
+            }
+    
+        }
+    }
+   
     .message-box {
         display: flex;
         justify-content: center;
@@ -21,6 +76,27 @@
             border-radius: 5px;
             background: #dbd4d4;
             border-color: #adaaaa;
+        }
+        .send-btn{
+            cursor: pointer;
+            position: absolute;
+            right: 10px;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            background: #727171;
+            i {
+                font-size: 1rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                color: #ffffff;
+                &.fa-spinner {
+                    pointer-events:  none;
+                }
+                
+            }
         }
     }
 }

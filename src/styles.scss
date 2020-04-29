@@ -4,7 +4,7 @@ html,
 body {
   height: 100%;
   margin: 0px;
-  background: #347fc3 !important;
+  background: rgb(29, 29, 29) !important;
   width: 100%;
   overflow-x: hidden;
   overflow-y: hidden;
@@ -50,16 +50,4 @@ body {
   font-family: 'Nunito-Regular';
 }
 
-.project-view-modal {
-  .modal-dialog {
-    height: 100%;
 
-    .modal-content {
-      height: 100%;
-    }
-  }
-
-  app-project-view-modal {
-    height: 100%;
-  }
-}

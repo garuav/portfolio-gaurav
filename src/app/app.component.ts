@@ -3,8 +3,10 @@ import {
   OnInit,
   ChangeDetectorRef,
   AfterViewInit,
+  Renderer2,
+  ElementRef,
 } from '@angular/core';
-import * as firebase from 'firebase';
+import * as firebase from 'firebase/app';
 import { firebaseInit } from '../common.constants';
 import { RouterOutlet } from '@angular/router';
 import { fade } from './route-animations';
@@ -22,24 +24,22 @@ export class AppComponent implements OnInit, AfterViewInit {
   loginData: any;
   tabsData;
   projectViewModalRef;
-  isPageLoading: boolean;
   showChatComponent: boolean;
   constructor(
     private modalService: NgbModal,
     private commonService: CommonService,
-    private cdr: ChangeDetectorRef
   ) {
-    
+
   }
   ngOnInit() {
-    this.isPageLoading = true;
     this.initFirebase();
   }
 
   ngAfterViewInit() {
     setTimeout(() => {
-      this.isPageLoading = false;
-      this.cdr.detectChanges();
+     const element =  document.getElementById('loader-main');
+     element.style.display = 'none';
+     this.commonService.getRegistrationToken();
     }, 2000);
   }
   initFirebase() {

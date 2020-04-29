@@ -1,23 +1,18 @@
-<ng-container *ngIf="isPageLoading; else MainPageBlock">
-  <div class="container-fluid p-0 loader-page">
-    <div class="bar">
-      <div class="circle"></div>
-      <p>Loading</p>
+<!-- <ng-container *ngIf="isPageLoading; else MainPageBlock">
+  <div class="loader-div p-0 ">
+    <div class = "centered">
+      <div class = "blob-1"></div>
+      <div class = "blob-2"></div>
     </div>
   </div>
-</ng-container>
-<ng-template #MainPageBlock>
+</ng-container> -->
+<!-- <ng-template #MainPageBlock> -->
   <div class="container-fluid p-0 main-home-container">
     <app-header (headerOutputEvents)="headerOutputEvents($event)"></app-header>
     <div class="routed-page" [@routeAnimations]="prepareRoute(outlet)">
       <router-outlet #outlet="outlet"></router-outlet>
     </div>
-    <!-- <div class="project-view" *ngIf="tabsData">
-      <app-project-view-modal
-        [tabsData]="tabsData"
-        (projectViewEvents)="projectViewEvents($event)"
-      ></app-project-view-modal>
-    </div> -->
+   
     <ng-container *ngIf="showChatComponent">
       <app-chat-page></app-chat-page>
     </ng-container>
@@ -26,4 +21,4 @@
     </div>
   </div>
  
-</ng-template>
+<!-- </ng-template> -->
