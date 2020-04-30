@@ -26,7 +26,8 @@ export class ChatPageComponent implements OnInit {
     const param = {
       messageTxt: this.chatbox,
       uid : this.loggedInUser.uid,
-      registration_token: this.loggedInUser.registration_token
+      registration_token: this.loggedInUser.registration_token,
+      dateTime: new Date()
     }
     console.log(' param = ',  param);
     this.disableSendButton = true;
@@ -35,7 +36,8 @@ export class ChatPageComponent implements OnInit {
       this.disableSendButton = false;
       const obj = {
           sender: 'user',
-          text: this.chatbox
+          text: this.chatbox,
+          dateTime: new Date()
       };
       this.commonService.saveChatMessages(obj).then(response => {
         console.log('response from save chat message = ', response);

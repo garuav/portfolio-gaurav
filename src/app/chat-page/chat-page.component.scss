@@ -44,21 +44,19 @@
         height: 100%;
         overflow-y: scroll;
         .chat-msg-box{
+            margin: .5rem;
+            min-height: 3rem;
+            padding: .5rem;
+            display: flex;
+            border-radius: 10px;
+            overflow-wrap: anywhere;
             &.own-msg {
-                margin: .5rem;
-                min-height: 3rem;
-                padding: .5rem;
-                display: flex;
+                justify-content: flex-end;
                 border: 2px solid #c47d61;
-                border-radius: 10px;
             }
             &.admin-msg{
-                margin: .5rem;
-                min-height: 3rem;
-                padding: .5rem;
-                display: flex;
-                border: 2px solid #c47d61;
-                border-radius: 10px;
+                justify-content: flex-start;
+                border: 2px solid #65a197;
             }
     
         }

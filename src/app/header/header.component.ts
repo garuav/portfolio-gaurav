@@ -41,6 +41,7 @@ export class HeaderComponent implements OnInit {
   }
   logoutUser() {
     localStorage.clear();
+    this.commonService.loginLogoutEvents(false);
     this.loggedInUserData = undefined;
   }
 }

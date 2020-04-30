@@ -172,7 +172,7 @@ export class CommonService {
           console.log('update data error = ', error);
         });
   }
-  sendNotification(type: string, data: any) {
+  sendNotification(type: string, data: any): Observable<any> {
     if (this.mobileAppToken) {
       const header = new HttpHeaders({
         Authorization: `key=${serverKey}`,
@@ -189,7 +189,8 @@ export class CommonService {
           icon: '../../favicon.ico',
           objectType: 'user_loggedin' ? 'new_user' : 'chat_notification',
           uid: data.uid,
-          registration_token: data.registration_token
+          registration_token: data.registration_token,
+          dateTime: new Date()
         },
         content_available: true
       };

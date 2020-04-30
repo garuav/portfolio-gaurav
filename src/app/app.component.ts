@@ -29,7 +29,12 @@ export class AppComponent implements OnInit, AfterViewInit {
     private modalService: NgbModal,
     private commonService: CommonService,
   ) {
-
+    this.commonService.loginLogoutSubjectObservable.subscribe(res => {
+      console.log('isLogin = ', res);
+      if (!res) {
+       this.showChatComponent = false;
+      }
+    });
   }
   ngOnInit() {
     this.initFirebase();
