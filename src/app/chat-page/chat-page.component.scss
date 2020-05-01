@@ -43,6 +43,13 @@
     .messages-list{
         height: 100%;
         overflow-y: scroll;
+        scroll-behavior: smooth;
+        .messages-row{
+            p {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
         .chat-msg-box{
             margin: .5rem;
             min-height: 3rem;
@@ -50,16 +57,22 @@
             display: flex;
             border-radius: 10px;
             overflow-wrap: anywhere;
+            flex-flow: column;
+            p{
+                margin: 0;
+                font-size: .7rem;
+            }
             &.own-msg {
-                justify-content: flex-end;
+                align-items: flex-end;
                 border: 2px solid #c47d61;
             }
             &.admin-msg{
-                justify-content: flex-start;
+                align-items: flex-start;
                 border: 2px solid #65a197;
             }
     
         }
+    }
     }
    
     .message-box {

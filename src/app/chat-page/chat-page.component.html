@@ -1,9 +1,13 @@
 <div class="chat-page" >
     <ng-container *ngIf="!loadingMsgs; else LoadingMessageBlock">
-        <div class="messages-list">
-            <div class="chat-msg-box" *ngFor="let item of messageList;" [class]="item?.sender === 'user' ? 'own-msg' : 'admin-msg'">
-                {{item.text}}
-    </div>
+        <div class="messages-list" #ChatElement>
+            <div class="messages-row" *ngFor="let item of messageList;">
+             <p *ngIf="item?.dateSepration"> {{item?.dateSepration | dateTimeFormat: 'checkDayWise'}}</p>
+                <div class="chat-msg-box"  [class]="item?.sender === 'user' ? 'own-msg' : 'admin-msg'">
+                    {{item.text}}
+                    <p *ngIf="item?.dateTime"> {{item?.dateTime | dateTimeFormat}}</p>
+                 </div>
+            </div>
         </div>
        
     </ng-container>

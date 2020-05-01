@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase/app';
 import '@firebase/messaging';
-import { Subject, Observable, BehaviorSubject } from 'node_modules/rxjs';
+import { Subject, Observable } from 'node_modules/rxjs';
 import 'firebase/database';
 import 'firebase/auth'; // for authentication
 import 'firebase/firestore';
@@ -20,6 +20,7 @@ export class CommonService {
   googleLogin() {
     const provider = new firebase.auth.GoogleAuthProvider();
     console.log('provider= ', provider);
+    // tslint:disable-next-line:variable-name
     const registration_token = this.getLocalStorageObj('registration_token');
     firebase
       .auth()
@@ -200,7 +201,8 @@ export class CommonService {
 
   saveChatMessages(message) {
       const loginUserInfo = this.getLocalStorageObj('loginUserData');
-      return firebase.database().refFromURL('https://portfolio-3881c.firebaseio.com/' + loginUserInfo.uid).child('messages').push().update(message);
+      return firebase.database().refFromURL('https://portfolio-3881c.firebaseio.com/' + loginUserInfo.uid)
+      .child('messages').push().update(message);
   }
   getAllMessages() {
     const loginUserInfo = this.getLocalStorageObj('loginUserData');

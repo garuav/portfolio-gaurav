@@ -16,6 +16,7 @@ import { HeaderComponent } from './header/header.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
+import { DateTimeFormatPipe } from './common/date-time-format.pipe';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { FormsModule } from '@angular/forms';
     AboutComponent,
     ProjectDataRefDirective,
     HeaderComponent,
+    DateTimeFormatPipe,
   ],
   imports: [
     BrowserModule,

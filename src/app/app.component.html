@@ -16,7 +16,7 @@
     <ng-container *ngIf="showChatComponent">
       <app-chat-page></app-chat-page>
     </ng-container>
-    <div class="chat-page-icon" (click)="chatPage()">
+    <div class="chat-page-icon" (click)="chatPage()" (document.click)="showChatComponent = false">
       <i class="fa fa-comment"></i>
     </div>
   </div>

@@ -13,6 +13,7 @@ import { fade } from './route-animations';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CommonService } from './services/common.service';
 import { LoginComponent } from './login/login.component';
+import { SwPush } from '@angular/service-worker';
 
 @Component({
   selector: 'app-root',
@@ -28,6 +29,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   constructor(
     private modalService: NgbModal,
     private commonService: CommonService,
+    private swPush: SwPush
   ) {
     this.commonService.loginLogoutSubjectObservable.subscribe(res => {
       console.log('isLogin = ', res);
@@ -49,6 +51,11 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
   initFirebase() {
     firebase.initializeApp(firebaseInit);
+    firebase.messaging().onMessage((res) => {
+      console.log('on Notification = ', res);
+    }, error => {
+      console.log('on Notification error = ', error);
+    })
   }
   prepareRoute(outlet: RouterOutlet) {
     return (
