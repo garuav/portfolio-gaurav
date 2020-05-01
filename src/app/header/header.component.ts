@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCheckLoggedInUser();
-    this.navBarCollapsed = false;
+    this.navBarCollapsed = true;
   }
   getCheckLoggedInUser() {
     if (this.commonService.getLocalStorageObj('loginUserData')) {
