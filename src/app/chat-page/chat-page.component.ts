@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { CommonService } from '../services/common.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-chat-page',
@@ -61,7 +62,21 @@ export class ChatPageComponent implements OnInit {
       console.log('response from all messages = ', res.val());
       res.forEach(element => {
         console.log('element = ', element.val());
-        this.messageList.push(element.val());
+        // this.messageList.push(element.val());
+        if (element.val().dateTime) {
+        const date = element.val().dateTime;
+        if (this.messageList.findIndex(item => moment(item.dateTime).format('DD.MM.YYYY').includes(moment(date).format('DD.MM.YYYY'))) === -1) {
+          this.messageList.push({
+           sender:  element.val().sender,
+           text:  element.val().text,
+           dateTime:  element.val().dateTime,
+           dateSepration:  element.val().dateTime
+          });
+        } else {
+          this.messageList.push(element.val());
+        }
+        console.log(' this.messageList = ', this.messageList);
+      }
       });
       this.loadingMsgs = false;
       setTimeout(() => {

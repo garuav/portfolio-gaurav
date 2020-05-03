@@ -44,6 +44,15 @@
         About
         <span class="sr-only">(current)</span>
       </a>
+      <a
+      class="nav-item nav-link "
+      routerLink="contact"
+      [routerLinkActive]="['active']"
+    >
+      <!--   <i class="fa fa-list"></i> -->
+      Contact
+      <span class="sr-only">(current)</span>
+    </a>
       <ng-container *ngIf="loggedInUserData; else LoginButtonBlock">
         <a
         class="nav-item nav-link small-device-text"

@@ -15,8 +15,9 @@ import { ProjectDataRefDirective } from './projects-worked/project-data-ref.dire
 import { HeaderComponent } from './header/header.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DateTimeFormatPipe } from './common/date-time-format.pipe';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { DateTimeFormatPipe } from './common/date-time-format.pipe';
     ProjectDataRefDirective,
     HeaderComponent,
     DateTimeFormatPipe,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +39,8 @@ import { DateTimeFormatPipe } from './common/date-time-format.pipe';
     NgbModule,
     BrowserAnimationsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

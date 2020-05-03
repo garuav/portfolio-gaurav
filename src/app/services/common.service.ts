@@ -195,6 +195,11 @@ export class CommonService {
         },
         content_available: true
       };
+      if (type === 'contact') {
+        payload.data.title = `${data.name} Contacted You` ;
+        payload.data.objectType = 'contact';
+        payload.data.body = data.description;
+      }
       return  this.http.post(`https://fcm.googleapis.com/fcm/send`, payload, { headers: header});
     }
   }
@@ -210,5 +215,8 @@ export class CommonService {
   }
   getDataIfUserExists(uid) {
     return firebase.database().refFromURL('https://portfolio-3881c.firebaseio.com/' + uid).once('value');
+  }
+  saveContactData(data) {
+    return firebase.database().refFromURL('https://portfolio-3881c.firebaseio.com/' ).child('contact').push().update(data);
   }
 }

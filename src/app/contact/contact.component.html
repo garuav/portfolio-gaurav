@@ -1,0 +1,25 @@
+<div class="contact">
+    <div class="card project-card ">
+        <form [formGroup]="contactForm" (ngSubmit)="saveContactForm()">
+        <div class="card-header">
+          <h5 class="card-title">CONTACT</h5>
+        </div>
+       
+        <div class="card-body">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Name" formControlName="name" [ngClass]="{'has-error':formSubmitted && contactForm.controls.name.hasError('required')}">
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="Email" formControlName="email" [ngClass]="{'has-error':formSubmitted && contactForm.controls.email.hasError('required')}">
+                  </div>
+                  <div class="form-group">
+                    <textarea placeholder="Message" class="form-control" formControlName="description" [ngClass]="{'has-error':formSubmitted && contactForm.controls.description.hasError('required')}"></textarea>
+                </div>
+        </div>
+        <div class="card-footer">
+        <button type="submit" class="btn btn-primary">SUBMIT</button>
+        </div>
+    </form>
+   
+      </div>    
+</div>

@@ -4,39 +4,113 @@
   justify-content: center;
   align-items: center;
   padding: 1rem 0;
-  height: 100%;
-  .card {
-    margin: 0.5rem;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    background: #2e2d33;
-    width: 18rem;
-    min-height: 20rem;
-    &:hover {
-      animation: pulse 2s;
-    }
-    .skills {
-      font-family: 'NunitoExtraBold';
-    }
-    .card-header {
-      padding: 0.3rem;
-      .card-title {
-        font-family: 'NunitoBlack';
-        margin: 0;
-        text-transform: uppercase;
+  height: calc(100% - 50px);
+  .project-card{
+    &.card {
+      margin: 0.5rem;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+      background: #2e2d33;
+      width: 18rem;
+      min-height: 20rem;
+      &:hover {
+        animation: pulse 2s;
+      }
+      .skills {
+        font-family: 'NunitoExtraBold';
+      }
+      .card-header {
+        padding: 0.3rem;
+        .card-title {
+          font-family: 'NunitoBlack';
+          margin: 0;
+          text-transform: uppercase;
+          color: #ffffff;
+        }
+      }
+      .picsum-img-wrapper{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+          width: 19rem;
+        }
+      }
+      .card-body {
         color: #ffffff;
+        padding: 1rem;
+        max-height: 15rem;
+        overflow-y: auto;
+      }
+      .card-footer {
+        padding: 0.5rem;
+        background: #2d2c33;
+        a {
+          color: #b3c6da;
+        }
       }
     }
-    .card-body {
-      color: #ffffff;
-      padding: 1rem;
-      max-height: 15rem;
-      overflow-y: auto;
-    }
-    .card-footer {
-      padding: 0.5rem;
-      background: #2d2c33;
-      a {
-        color: #b3c6da;
+  }
+  
+  .highlight-selected-project{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    overflow: auto;
+    .project-data{
+      width: 98%;
+      height: 100%;
+      margin: auto;
+      .card {
+        margin: 0.5rem;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+        background: #2e2d33;
+        width: 100%;
+        // min-height: 20rem;
+        // &:hover {
+        //   animation: pulse 2s;
+        // }
+        .skills {
+          font-family: 'NunitoExtraBold';
+        }
+        .card-header {
+          padding: 0.3rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          .card-title {
+            font-family: 'NunitoBlack';
+            margin: 0;
+            text-transform: uppercase;
+            color: #ffffff;
+          }
+          i{
+            color: #ffffff;
+            font-size: 1.5rem;
+          }
+        }
+        .card-body {
+          color: #ffffff;
+          padding: 1rem;
+          // max-height: 15rem;
+          // overflow-y: auto;
+          .picsum-img-wrapper{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+              width: 19rem;
+            }
+          }
+        }
+        .card-footer {
+          padding: 0.5rem;
+          background: #2d2c33;
+          a {
+            color: #b3c6da;
+          }
+        }
       }
     }
   }

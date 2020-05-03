@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ProjectsWorkedComponent } from './projects-worked/projects-worked.component';
+import { ContactComponent } from './contact/contact.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,12 @@ const routes: Routes = [
     component: AboutComponent,
     data: { animation: 'isRight' },
   },
+  {
+    path: 'contact',
+    component: ContactComponent,
+    data: { animation: 'isRight' },
+  },
+
 ];
 
 @NgModule({

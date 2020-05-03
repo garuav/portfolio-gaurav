@@ -49,6 +49,9 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                position: sticky;
+                top: 0;
+                
             }
         .chat-msg-box{
             margin: .5rem;

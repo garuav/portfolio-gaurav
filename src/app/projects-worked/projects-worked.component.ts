@@ -12,7 +12,6 @@ import { ProjectData } from '../common/project-data';
 })
 export class ProjectsWorkedComponent implements OnInit, AfterContentInit {
   projectsData: ProjectData[];
-
   constructor(
   ) {}
   ngOnInit(): void {
@@ -45,45 +44,45 @@ The HUNDŌ Exchange enables users to buy or
         url: 'https://hireandfireyourkids.com/',
         images: 'assets/project-images/hireandfire.png',
       },
-      {
-        project_id: 5,
-        project_name: 'Trade 360',
-        project_description: 'testing ',
-        url: '',
-        language_framework: 'Angular 8,  CSS3',
+      // {
+      //   project_id: 5,
+      //   project_name: 'Trade 360',
+      //   project_description: 'testing ',
+      //   url: '',
+      //   language_framework: 'Angular 8,  CSS3',
 
-        images: '',
-      },
-      {
-        project_id: 6,
-        project_name: 'Dashboarding Solution',
-        project_description: 'testing ',
-        url: '',
-        language_framework: 'Angular 8,  CSS3',
+      //   images: '',
+      // },
+      // {
+      //   project_id: 6,
+      //   project_name: 'Dashboarding Solution',
+      //   project_description: 'testing ',
+      //   url: '',
+      //   language_framework: 'Angular 8,  CSS3',
 
-        images: '',
-      },
-      {
-        project_id: 1,
-        project_name: 'Pace HCM',
-        project_description:
-          // tslint:disable-next-line:max-line-length
-          'HRM Project used to automate the recruitment process of candidates from screening stage to On Boarding stage.',
-        url: 'https://www.pacehcm.com/',
-        language_framework: ' AngularJS(1.6), CSS3, Bootsrtap3.',
-        images: 'assets/project-images/pacehcm.png',
-      },
-      {
-        project_id: 2,
-        project_name: 'What Mate',
-        project_description:
-          // tslint:disable-next-line:max-line-length
-          'A Digital Transformation Platform to help users manage all their transactions related to operations and business through ChatBot guided by chat text inputs or by voice instructions. ',
-        url: 'https://www.whatmate.com/',
-        language_framework: ' AngularJS(1.6), CSS3, Bootsrtap3.',
+      //   images: '',
+      // },
+      // {
+      //   project_id: 1,
+      //   project_name: 'Pace HCM',
+      //   project_description:
+      //     // tslint:disable-next-line:max-line-length
+      //     'HRM Project used to automate the recruitment process of candidates from screening stage to On Boarding stage.',
+      //   url: 'https://www.pacehcm.com/',
+      //   language_framework: ' AngularJS(1.6), CSS3, Bootsrtap3.',
+      //   images: 'assets/project-images/pacehcm.png',
+      // },
+      // {
+      //   project_id: 2,
+      //   project_name: 'What Mate',
+      //   project_description:
+      //     // tslint:disable-next-line:max-line-length
+      //     'A Digital Transformation Platform to help users manage all their transactions related to operations and business through ChatBot guided by chat text inputs or by voice instructions. ',
+      //   url: 'https://www.whatmate.com/',
+      //   language_framework: ' AngularJS(1.6), CSS3, Bootsrtap3.',
 
-        images: 'assets/project-images/whatmate.png',
-      },
+      //   images: 'assets/project-images/whatmate.png',
+      // },
     ];
   }
   ngAfterContentInit() {
