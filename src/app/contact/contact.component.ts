@@ -39,6 +39,7 @@ export class ContactComponent implements OnInit {
         }
         this.commonService.saveContactData(contactValue).then(res => {
         console.log('response from save contact = ', res);
+        this.formSubmitted = false;
         this.createForm();
 
       }).catch(error => {
