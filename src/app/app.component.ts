@@ -61,6 +61,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     }, error => {
       console.log('on Notification error = ', error);
     });
+  
   }
   prepareRoute(outlet: RouterOutlet) {
     return (
