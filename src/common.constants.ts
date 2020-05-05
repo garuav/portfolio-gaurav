@@ -9,4 +9,6 @@ export const firebaseInit = {
   measurementId: 'G-RGKXB2DKQF',
 };
  // tslint:disable-next-line:max-line-length
- export const serverKey = 'AAAAnbuqE_Y:APA91bESngkms-BxIzSvHjyllhhBSs7d10usRCNxKecXQ4aL0Fr-pdu0tJNKTfwyl0DTX37AlaKEG_NXWw1g0i2EAAnzuW4s2LQ34LcLPS9KUxm21Pp01E0oaeVQO1zCug8VAkJhJVcS';
+export const serverKey = 'AAAAnbuqE_Y:APA91bESngkms-BxIzSvHjyllhhBSs7d10usRCNxKecXQ4aL0Fr-pdu0tJNKTfwyl0DTX37AlaKEG_NXWw1g0i2EAAnzuW4s2LQ34LcLPS9KUxm21Pp01E0oaeVQO1zCug8VAkJhJVcS';
+
+export const pushCertificateKey = 'BNsuzYn0BwtS9U8V2iPhDQPVl2qhbktTKMaA9X4qDHnjwDdp0HexceqTHtdsJBJC1Uixerxsg-3AP0cupCnb07M';

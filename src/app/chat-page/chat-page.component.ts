@@ -59,9 +59,9 @@ export class ChatPageComponent implements OnInit {
     this.loadingMsgs = true;
     this.commonService.getAllMessages().on('value', res => {
       this.messageList = [];
-      console.log('response from all messages = ', res.val());
+      // console.log('response from all messages = ', res.val());
       res.forEach(element => {
-        console.log('element = ', element.val());
+        // console.log('element = ', element.val());
         // this.messageList.push(element.val());
         if (element.val().dateTime) {
         const date = element.val().dateTime;
@@ -75,7 +75,7 @@ export class ChatPageComponent implements OnInit {
         } else {
           this.messageList.push(element.val());
         }
-        console.log(' this.messageList = ', this.messageList);
+        // console.log(' this.messageList = ', this.messageList);
       }
       });
       this.loadingMsgs = false;

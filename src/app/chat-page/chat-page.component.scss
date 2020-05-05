@@ -10,6 +10,14 @@
     flex-flow: column;
     justify-content: flex-end;
     overflow-y: auto;
+    // media query for mobile devices--start
+        @media screen and  (max-width: 468px){
+            width: 95%;
+            right: 8px;
+            height: 82%;
+            bottom: 3.5rem;
+        }
+  // media query for mobile devices--end
     .loading-msg{
         display: flex;
         justify-content: center;
@@ -45,12 +53,14 @@
         overflow-y: scroll;
         scroll-behavior: smooth;
         .messages-row{
+            display: flex;
+            flex-flow: column;
+            align-items: flex-end;
             p {
-                display: flex;
-                justify-content: center;
-                align-items: center;
+                
                 position: sticky;
                 top: 0;
+                align-self: center;
                 
             }
         .chat-msg-box{
@@ -64,13 +74,14 @@
             p{
                 margin: 0;
                 font-size: .7rem;
+                align-self: flex-end;
             }
             &.own-msg {
-                align-items: flex-end;
+                align-self: flex-end;
                 border: 2px solid #c47d61;
             }
             &.admin-msg{
-                align-items: flex-start;
+                align-self: flex-start;
                 border: 2px solid #65a197;
             }
     

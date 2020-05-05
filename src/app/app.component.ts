@@ -7,7 +7,7 @@ import {
   ElementRef,
 } from '@angular/core';
 import * as firebase from 'firebase/app';
-import { firebaseInit } from '../common.constants';
+import { firebaseInit, pushCertificateKey } from '../common.constants';
 import { RouterOutlet } from '@angular/router';
 import { fade } from './route-animations';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -51,11 +51,16 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
   initFirebase() {
     firebase.initializeApp(firebaseInit);
-    firebase.messaging().onMessage((res) => {
+    this.swPush.requestSubscription({serverPublicKey: pushCertificateKey}).then(res => {
+      console.log('response from requestSubscription  = ', res);
+    }).catch(error => {
+      console.log('from requestSubscription  = ', error);
+    });
+    this.swPush.messages.subscribe((res) => {
       console.log('on Notification = ', res);
     }, error => {
       console.log('on Notification error = ', error);
-    })
+    });
   }
   prepareRoute(outlet: RouterOutlet) {
     return (

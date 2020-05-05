@@ -38,7 +38,7 @@ import { ContactComponent } from './contact/contact.component';
     AppRoutingModule,
     NgbModule,
     BrowserAnimationsModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    ServiceWorkerModule.register('../ngsw-worker.js', { enabled: environment.production }),
     FormsModule,
     ReactiveFormsModule
   ],

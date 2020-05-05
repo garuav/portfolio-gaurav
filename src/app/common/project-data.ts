@@ -6,4 +6,6 @@ export interface ProjectData {
   url: string;
   language_framework: string;
   isTabSelected?: boolean;
+  play_store_link?: string;
+  app_store_link?: string;
 }

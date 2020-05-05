@@ -28,6 +28,8 @@ The HUNDŌ Exchange enables users to buy or
         language_framework: 'Angular 6, Ionic Framework, CSS3',
 
         images: 'assets/project-images/hundoexchange.png',
+        play_store_link: 'https://play.google.com/store/apps/details?id=com.hundoexchange.app',
+        app_store_link: ''
       },
       {
         project_id: 3,
@@ -43,6 +45,8 @@ The HUNDŌ Exchange enables users to buy or
 
         url: 'https://hireandfireyourkids.com/',
         images: 'assets/project-images/hireandfire.png',
+        play_store_link: 'https://play.google.com/store/apps/details?id=com.hfyk.app',
+        app_store_link: ''
       },
       // {
       //   project_id: 5,
