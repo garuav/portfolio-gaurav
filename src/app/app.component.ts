@@ -49,19 +49,27 @@ export class AppComponent implements OnInit, AfterViewInit {
      this.commonService.getRegistrationToken();
     }, 2000);
   }
-  initFirebase() {
+ async initFirebase() {
     firebase.initializeApp(firebaseInit);
-    this.swPush.requestSubscription({serverPublicKey: pushCertificateKey}).then(res => {
+    await this.swPush.requestSubscription({serverPublicKey: pushCertificateKey}).then(res => {
       console.log('response from requestSubscription  = ', res);
     }).catch(error => {
       console.log('from requestSubscription  = ', error);
     });
-    this.swPush.messages.subscribe((res) => {
+    await this.swPush.messages.subscribe((res) => {
       console.log('on Notification = ', res);
     }, error => {
       console.log('on Notification error = ', error);
     });
-  
+    await this.swPush.notificationClicks.subscribe(response => {
+      console.log('on notification click = ', response);
+      if (this.commonService.getLocalStorageObj('loginUserData')) {
+        this.showChatComponent = true;
+      }
+    }, error => {
+      console.log('on notification click erro = ', error);
+
+    });
   }
   prepareRoute(outlet: RouterOutlet) {
     return (
