@@ -129,7 +129,7 @@ export class CommonService {
   getRegistrationToken() {
     if ('serviceWorker' in navigator) {
       const messaging =  firebase.messaging();
-      navigator.serviceWorker.register('ngsw-worker.js')
+      navigator.serviceWorker.register('ngsw-worker.js', {scope: '/'})
       .then((registration) => {
         console.log('registration = ', registration);
         messaging.useServiceWorker(registration);
