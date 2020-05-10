@@ -9,7 +9,7 @@ import {
 import * as firebase from 'firebase/app';
 import { firebaseInit, pushCertificateKey } from '../common.constants';
 import { RouterOutlet } from '@angular/router';
-import { fade } from './route-animations';
+import { routeAnimations } from './route-animations';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CommonService } from './services/common.service';
 import { LoginComponent } from './login/login.component';
@@ -19,7 +19,7 @@ import { SwPush } from '@angular/service-worker';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  animations: [fade],
+  animations: [routeAnimations],
 })
 export class AppComponent implements OnInit, AfterViewInit {
   loginData: any;
@@ -35,6 +35,20 @@ export class AppComponent implements OnInit, AfterViewInit {
       console.log('isLogin = ', res);
       if (!res) {
        this.showChatComponent = false;
+       this.swPush.unsubscribe().then(response => {
+         console.log('unsubscribing notifications = ', response);
+       }).catch(error => {
+        console.log('error notifications = ', error);
+
+       });
+      } else {
+         this.commonService.onTokenRefresh();
+         this.commonService.getMobileToken();
+         this.swPush.requestSubscription({serverPublicKey: pushCertificateKey}).then(response => {
+          console.log('response from requestSubscription  = ', response);
+        }).catch(error => {
+          console.log('from requestSubscription  = ', error);
+        });
       }
     });
   }
@@ -46,7 +60,11 @@ export class AppComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
      const element =  document.getElementById('loader-main');
      element.style.display = 'none';
-     this.commonService.getRegistrationToken();
+     this.commonService.registerServiceWorker();
+     if (this.commonService.getLocalStorageObj('loginUserData')) {
+      this.commonService.getRegistrationToken();
+      this.commonService.getMobileToken();
+     }
     }, 2000);
   }
  async initFirebase() {
@@ -73,7 +91,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
   prepareRoute(outlet: RouterOutlet) {
     return (
-      outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation
+      outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation && outlet.activatedRoute
     );
   }
   headerOutputEvents(event) {

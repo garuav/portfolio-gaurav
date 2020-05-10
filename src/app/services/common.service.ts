@@ -7,7 +7,7 @@ import 'firebase/auth'; // for authentication
 import 'firebase/firestore';
 import { SwPush } from '@angular/service-worker';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { serverKey } from 'src/common.constants';
+import { serverKey, pushCertificateKey } from 'src/common.constants';
 
 @Injectable({
   providedIn: 'root',
@@ -127,6 +127,49 @@ export class CommonService {
   }
 
   getRegistrationToken() {
+      const messaging =  firebase.messaging();
+      Notification.requestPermission().then(res => {
+      messaging.usePublicVapidKey(pushCertificateKey);
+      messaging.getToken().then((token: any) => {
+        console.log('token = ', token);
+        this.setLocalStorageObj('registration_token', token);
+        if (this.getLocalStorageObj('loginUserData')) {
+          this.updateDatabseData('registration_token', token);
+        }
+
+      }).catch(error => {
+        console.log('error = ', error);
+      });
+    }).catch(error => {
+
+    });
+  }
+  async onTokenRefresh() {
+    const messaging =  firebase.messaging();
+    await messaging.onTokenRefresh((token: any) => {
+      console.log('token = ', token);
+      this.setLocalStorageObj('registration_token', token);
+      if (this.getLocalStorageObj('loginUserData')) {
+        this.updateDatabseData('registration_token', token);
+      }
+    }, error =>  {
+      console.log('error = ', error);
+    });
+  }
+
+  getMobileToken() {
+    firebase.firestore().collection('userData').get().then( response => {
+      response.forEach((doc) => {
+        console.log('response data mobile app = ', doc.data());
+        this.setLocalStorageObj('mobileapp_token', doc.data().token);
+        this.mobileAppToken = doc.data().token;
+    });
+      }).catch(error => {
+      console.log('error= ', error);
+
+      });
+  }
+  registerServiceWorker() {
     if ('serviceWorker' in navigator) {
       const messaging =  firebase.messaging();
       navigator.serviceWorker.register('ngsw-worker.js', {scope: '/'})
@@ -134,31 +177,7 @@ export class CommonService {
         console.log('registration = ', registration);
         messaging.useServiceWorker(registration);
       });
-      Notification.requestPermission().then(res => {
-      messaging.usePublicVapidKey('BNsuzYn0BwtS9U8V2iPhDQPVl2qhbktTKMaA9X4qDHnjwDdp0HexceqTHtdsJBJC1Uixerxsg-3AP0cupCnb07M');
-      messaging.getToken().then((token: any) => {
-        console.log('token = ', token);
-        this.setLocalStorageObj('registration_token', token);
-        if (this.getLocalStorageObj('loginUserData')) {
-          this.updateDatabseData('registration_token', token);
-        }
-        firebase.firestore().collection('userData').get().then( response => {
-          response.forEach((doc) => {
-            console.log('response data mobile app = ', doc.data());
-            this.setLocalStorageObj('mobileapp_token', doc.data().token);
-            this.mobileAppToken = doc.data().token;
-        });
-          }).catch(error => {
-          console.log('error= ', error);
-
-          });
-      }).catch(error => {
-        console.log('error = ', error);
-      });
-    }).catch(error => {
-
-    });
-      } else {
+    } else {
       console.log('false');
       }
   }
