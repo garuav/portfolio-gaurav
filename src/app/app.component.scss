@@ -29,6 +29,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    animation: heartBeat;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
     i {
       color: #ffffff;
     }
