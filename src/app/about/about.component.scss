@@ -8,6 +8,22 @@
     h4 {
       font-family: 'Nunito-Black';
       color: #dacccc;
+      display: flex;
+      justify-content: space-between;
+      a {
+        height: 2.5rem;
+        width: 2.5rem;
+        border-radius: 50%;
+        background-color: #79b879;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        i {
+          font-size: 1.3rem;
+          color: #ffffff;
+        }
+      }
     }
     .about-me-desc {
       h6 {
