@@ -52,6 +52,11 @@ export class CommonService {
             console.log('error = ', error);
           });
         } else {
+          this.saveDataToUsersCollection('registered').then(response => {
+            console.log('saved user to collections = ', response);
+          }).catch(error => {
+            console.log('error  collections = ', error);
+          });
           this.getDataIfUserExists(result.user.uid).then(res => {
             console.log('response of exsisitng user = ', res.val());
             const user = {
@@ -114,6 +119,11 @@ export class CommonService {
   // firebase save data to DB--start
   saveUser(loginData) {
     console.log('loginData = ', loginData);
+    this.saveDataToUsersCollection('registered').then(response => {
+      console.log('saved user to collections = ', response);
+    }).catch(error => {
+      console.log('error  collections = ', error);
+    });
     return firebase
       .database()
       .refFromURL('https://portfolio-3881c.firebaseio.com/' + loginData.uid).update(loginData);
@@ -236,6 +246,53 @@ export class CommonService {
     return firebase.database().refFromURL('https://portfolio-3881c.firebaseio.com/' + uid).once('value');
   }
   saveContactData(data) {
+    this.saveDataToUsersCollection('contacted').then(response => {
+      console.log('saved user to collections = ', response);
+    }).catch(error => {
+      console.log('error  collections = ', error);
+    });
     return firebase.database().refFromURL('https://portfolio-3881c.firebaseio.com/' ).child('contact').push().update(data);
+  }
+
+  saveDataToUsersCollection(regType: string) {
+   const userRef =  firebase.firestore().collection('userData').doc('UsersData');
+   return  firebase.firestore().runTransaction((transaction) => {
+      return transaction.get(userRef).then(res => {
+        if (res.exists) {
+          switch (regType) {
+            case 'registered':
+              userRef.update({
+                RegisteredUsers : res.data().RegisteredUsers + 1,
+              });
+              break;
+            case 'anonymous':
+              userRef.update({
+                AnonymousUsers : res.data().AnonymousUsers + 1,
+              });
+              break;
+              case 'contacted':
+              userRef.update({
+                ContactedUsers : res.data().ContactedUsers + 1,
+              });
+              break;
+              case 'visits':
+                userRef.update({
+                  UsersVisits : res.data().UsersVisits + 1,
+                });
+                break;
+          }
+        }
+      });
+    });
+    // .then( response => {
+    //   response.forEach((doc) => {
+    //     console.log('response data mobile app = ', doc.data());
+    //     this.setLocalStorageObj('mobileapp_token', doc.data().registration_token);
+    //     this.mobileAppToken = doc.data().registration_token;
+    // });
+    //   }).catch(error => {
+    //   console.log('error= ', error);
+
+    //   });
   }
 }
