@@ -65,7 +65,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.commonService.getRegistrationToken();
       this.commonService.getMobileToken();
      }
-    }, 2000);
+    }, 500);
   }
  async initFirebase() {
     firebase.initializeApp(firebaseInit);
