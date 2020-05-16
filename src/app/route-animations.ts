@@ -38,7 +38,7 @@ export const routeAnimations = trigger('routeAnimations', [
   // ]),
   transition('* <=> *', [
     query(':enter, :leave',
-    style({ position: 'fixed', width: '100%' }),
+    style({ position: 'fixed', width: '100%', height: '100%' }),
     { optional: true }),
     group([
     query(':enter', [
