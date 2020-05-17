@@ -1,10 +1,7 @@
 import {
   Component,
   OnInit,
-  ChangeDetectorRef,
   AfterViewInit,
-  Renderer2,
-  ElementRef,
 } from '@angular/core';
 import * as firebase from 'firebase/app';
 import { firebaseInit, pushCertificateKey } from '../common.constants';
@@ -54,6 +51,15 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
   ngOnInit() {
     this.initFirebase();
+    if (window.location.href.includes('gauravgithub')) {
+      setTimeout(() => {
+        this.commonService.saveDataToUsersCollection('visits').then(response => {
+          console.log('saved user to collections = ', response);
+        }).catch(error => {
+          console.log('error  collections = ', error);
+        });
+      }, 2000);
+    }
   }
 
   ngAfterViewInit() {
