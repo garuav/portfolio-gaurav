@@ -15,14 +15,12 @@
     [ngClass]="{ collapse: navBarCollapsed, 'navbar-collapse': true }"
   >
     <div class="navbar-nav">
-      <!--  <div class="nav-links">  -->
       <a
         class="nav-item nav-link "
         routerLink="home"
         [routerLinkActive]="['active']"
         (click)= "navBarCollapsed = true"
       >
-        <!--  <i class="fa fa-home"></i>  -->
         Home
         <span class="sr-only">(current)</span>
       </a>
@@ -33,7 +31,6 @@
         [routerLinkActive]="['active']"
         (click)= "navBarCollapsed = true"
       >
-        <!--  <i class="fa fa-list"></i>  -->
         Projects
         <span class="sr-only">(current)</span>
       </a>
@@ -43,7 +40,6 @@
         [routerLinkActive]="['active']"
         (click)= "navBarCollapsed = true"
       >
-        <!--   <i class="fa fa-list"></i> -->
         About
         <span class="sr-only">(current)</span>
       </a>
@@ -53,7 +49,6 @@
       [routerLinkActive]="['active']"
       (click)= "navBarCollapsed = true"
     >
-      <!--   <i class="fa fa-list"></i> -->
       Contact
       <span class="sr-only">(current)</span>
     </a>
@@ -79,12 +74,10 @@
               </h4>
             </div>
 
-            <!-- <button ngbDropdownItem>Chat Page</button> -->
             <button ngbDropdownItem (click)="logoutUser()">Logout</button>
           </div>
         </div>
 
-        <!-- <a (click)="navigateTo('login')">Login</a> -->
       </ng-container>
       <ng-template #LoginButtonBlock>
         <a
