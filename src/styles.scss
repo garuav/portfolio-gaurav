@@ -9,6 +9,41 @@ body {
   overflow-x: hidden;
   overflow-y: hidden;
 }
+
+   // media query for mobile devices--start
+   @media screen and  (max-width: 468px){
+    .animated-divs{
+       display: none !important;
+    }
+    .contact{
+      .card {
+        width: 95%;
+      }
+    }
+ }
+ // media query for mobile devices--end
+ // media query for ipad--start
+ @media screen and  (max-width: 970px){
+   .header{
+    .small-device-text {
+          display: block !important;
+    }
+    .logged-in-user{
+      display: none;
+    }
+   }
+   .animated-divs{
+     display: none !important;
+  }
+  .contact{
+    .card {
+      width: 95%;
+    }
+  }
+
+ }
+ // media query for ipad--end
+
 // setting nunito fonts for app
 @font-face {
   font-family: 'Nunito-Regular';
