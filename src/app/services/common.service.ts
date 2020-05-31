@@ -168,12 +168,10 @@ export class CommonService {
   }
 
   getMobileToken() {
-    firebase.firestore().collection('userData').get().then( response => {
-      response.forEach((doc) => {
-        console.log('response data mobile app = ', doc.data());
-        this.setLocalStorageObj('mobileapp_token', doc.data().registration_token);
-        this.mobileAppToken = doc.data().registration_token;
-    });
+    firebase.firestore().collection('userData').doc('MobileAppUserData').get().then( response => {
+      console.log('response from mobile app = ', response.data());
+      this.setLocalStorageObj('mobileapp_token', response.data().registration_token);
+      this.mobileAppToken = response.data().registration_token;
       }).catch(error => { 
       console.log('error= ', error);
 
