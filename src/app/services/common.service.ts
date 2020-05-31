@@ -174,7 +174,7 @@ export class CommonService {
         this.setLocalStorageObj('mobileapp_token', doc.data().registration_token);
         this.mobileAppToken = doc.data().registration_token;
     });
-      }).catch(error => {
+      }).catch(error => { 
       console.log('error= ', error);
 
       });
