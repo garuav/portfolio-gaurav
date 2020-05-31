@@ -5,6 +5,9 @@
   height: 100%;
   padding: 5rem;
   .about-me-block {
+    background: #343535;
+    padding: 1rem;
+    border-radius: 10px;
     h4 {
       font-family: 'Nunito-Black';
       color: #dacccc;
@@ -31,6 +34,7 @@
         font-family: 'Nunito-Black';
         color: #d4d4d4;
         word-spacing: 0.3rem;
+        line-height: 1.7;
       }
     }
   }
