@@ -37,6 +37,9 @@
       text-decoration: none;
       color: #ffffff;
       margin: 0 0.5rem;
+      &.active {
+        color: #22c1c3;
+      }
     }
   }
   .small-device-text{
