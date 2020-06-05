@@ -17,6 +17,25 @@
     overflow-y: auto;
     height: 100%;
   }
+  .intro-div{
+    min-height: 2rem;
+    background: #ffffff;
+    position: absolute;
+    right: 2rem;
+    bottom: 4rem;
+    padding: 1rem;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    i {
+      place-self: flex-end;
+    }
+    h6{
+      text-align: center;
+    }
+  }
   .chat-page-icon{
     position: absolute;
     right: 1rem;

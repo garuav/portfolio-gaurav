@@ -16,6 +16,12 @@
     <ng-container *ngIf="showChatComponent">
       <app-chat-page></app-chat-page>
     </ng-container>
+    <div class="intro-div" *ngIf="showChatMessageDiv">
+      <i class="fa fa-times" (click)="showChatMessageDiv = false"></i>
+      <h6>
+        Want to Chat Click here <br> and login for chat
+      </h6>
+    </div>
     <div class="chat-page-icon" (click)="chatPage()" (document.click)="showChatComponent = false">
       <i class="fa fa-comment"></i>
     </div>
