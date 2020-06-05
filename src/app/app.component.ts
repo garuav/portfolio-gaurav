@@ -23,6 +23,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   tabsData;
   projectViewModalRef;
   showChatComponent: boolean;
+  showChatMessageDiv = true;
   constructor(
     private modalService: NgbModal,
     private commonService: CommonService,
