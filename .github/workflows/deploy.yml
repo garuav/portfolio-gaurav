@@ -16,8 +16,8 @@ jobs:
       matrix:
         node-version: [10.x, 12.x, 14.x]
 
-    steps:
-    - run: 
+    steps: 
+    - run: |
         rm -rf package-lock.json
         npm i 
         npm run deploy 
