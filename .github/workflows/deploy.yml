@@ -5,6 +5,7 @@ name: Deploy
 
 on:
   push:
+  pull-request:
     branches: [ dev_gaurav ]
 
 jobs:
