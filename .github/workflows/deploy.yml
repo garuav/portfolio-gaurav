@@ -17,5 +17,8 @@ jobs:
         node-version: [10.x, 12.x, 14.x]
 
     steps:
-    - run: npm run deploy 
+    - run: 
+        rm -rf package-lock.json
+        npm i 
+        npm run deploy 
    
