@@ -18,7 +18,5 @@ jobs:
 
     steps: 
     - run: 
-        rm -rf package-lock.json
-        
         npm run deploy 
    
