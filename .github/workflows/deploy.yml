@@ -8,7 +8,7 @@ on:
     branches: [ dev_gaurav ]
 
 jobs:
-  firebase-deploy:
+  build:
     
     runs-on: ubuntu-latest
 
