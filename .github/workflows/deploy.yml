@@ -4,6 +4,8 @@
 name: Deploy
 
 on:
+  pull_request:
+    branches: [dev_gaurav]
   push:
     branches: [ dev_gaurav ]
 
