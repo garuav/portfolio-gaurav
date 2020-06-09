@@ -43,7 +43,7 @@ jobs:
           name: portfolio-gaurav
           path: dist/portfolio-gaurav
       - name: Deploy to Firebase
-        uses: w9jds/firebase-action@master
+        uses: w9jds/firebase-action@dev_gaurav
         with:
           args: deploy --only hosting
        
