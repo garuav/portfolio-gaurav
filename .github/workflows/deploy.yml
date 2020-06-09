@@ -17,13 +17,16 @@ jobs:
         node-version: [10.x]
     
     steps:
-       -name: Removing package-lock file
-        -run: rm -rf package-lock.json
-       -name: Install Dependencies
-        -run: sudo npm install
-       -name: Run Deploy 
-        -run: sudo npm run deploy
-         env:
-            FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+    - name: Checkout Repo
+      uses: actions/checkout@dev_gaurav
+    - name: Removing package-lock file
+      run: rm -rf package-lock.json
+    - name: Install Dependencies
+      run: sudo npm install
+    - name: Run Deploy 
+      run: sudo npm run deploy
+       
+    env:
+      FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
              
    
