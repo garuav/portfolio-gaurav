@@ -18,7 +18,7 @@ jobs:
     
     steps:
     - name: Checkout Repo
-       uses:actions/checkout@dev_gaurav
+      uses: actions/checkout@dev_gaurav
     - name: Removing package-lock file
       run: rm -rf package-lock.json
     - name: Install Dependencies
