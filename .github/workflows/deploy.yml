@@ -19,33 +19,16 @@ jobs:
         node-version: [10.x]
     
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@dev_gaurav
-      - name: Install Dependencies
-        run: sudo npm install
-      - name: Build
-        run: npm run build-prod
-      - name: Archive Production Artifact
-        uses: actions/upload-artifact@dev_gaurav
-        with:
-          name: portfolio-gaurav
-          path: dist/portfolio-gaurav
-  deploy:
-    name: Deploy
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repo
-        uses: actions/checkout@dev_gaurav
-      - name: Download Artifact
-        uses: actions/download-artifact@dev_gaurav
-        with:
-          name: portfolio-gaurav
-          path: dist/portfolio-gaurav
-      - name: Deploy to Firebase
-        uses: w9jds/firebase-action@dev_gaurav
-        with:
-          args: deploy --only hosting
+     - name: Checkout Repo
+       uses: actions/checkout@dev_gaurav
+     - name: Initialize Node
+       run: sudo npm init
+     - name: Removing package-lock file
+       run: rm -rf package-lock.json
+     - name: Install Dependencies
+       run: sudo npm install
+     - name: Run Deploy 
+       run: sudo npm run deploy
        
     env:
       FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
