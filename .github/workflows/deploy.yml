@@ -19,8 +19,7 @@ jobs:
         node-version: [10.x]
     
     steps:
-     - name: Checkout Repo
-       uses: actions/checkout@dev_gaurav
+     
      - name: Initialize Node
        run: sudo npm init
      - name: Removing package-lock file
