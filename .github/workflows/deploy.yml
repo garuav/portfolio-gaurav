@@ -28,7 +28,7 @@ jobs:
      - name: Build Prod
        run: sudo npm build --prod
      - name: Run Deploy 
-       run: firebase deploy --hosting
+       run: firebase deploy --only hosting
        
     env:
       FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
