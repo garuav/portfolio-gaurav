@@ -27,6 +27,8 @@ jobs:
        run: sudo npm install
      - name: Build Prod
        run: sudo npm build --prod
+     - name: Install Firebase tools
+       run: sudo npm install firebase-tools
      - name: Deploy Project 
        run: firebase deploy --token $FIREBASE_TOKEN       
     env:
