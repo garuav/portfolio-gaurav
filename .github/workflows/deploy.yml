@@ -28,7 +28,7 @@ jobs:
      - name: Build Prod
        run: sudo npm build --prod
      - name: Run Deploy 
-     - uses: w9jds/firebase-action@master
+     - uses: w9jds/firebase-action@dev_gaurav
        with:
         args: deploy --only hosting
        
