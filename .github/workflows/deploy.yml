@@ -20,17 +20,35 @@ jobs:
     
     steps:
      
-     
+     - name: Checkout Repo
+       uses: actions/checkout@dev_gaurav
      - name: Removing package-lock file
        run: rm -rf package-lock.json
      - name: Install Dependencies
        run: sudo npm install
      - name: Build Prod
        run: sudo npm build --prod
-     - name: Run Deploy 
-     - uses: w9jds/firebase-action@dev_gaurav
+     - name: Archive Production Artifact
+       uses: actions/upload-artifact@dev_gaurav
        with:
-        args: deploy --only hosting
+          name: portfolio-gaurav
+          path: dist/portfolio-gaurav
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@dev_gaurav
+      - name: Download Artifact
+        uses: actions/download-artifact@dev_gaurav
+        with:
+          name: portfolio-gaurav
+          path: dist/portfolio-gaurav
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@dev_gaurav
+        with:
+          args: deploy --only hosting
        
     env:
       FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
