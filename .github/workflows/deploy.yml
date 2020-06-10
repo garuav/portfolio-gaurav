@@ -26,6 +26,8 @@ jobs:
        run: rm -rf package-lock.json
      - name: Install Dependencies
        run: sudo npm install
+     - name: Build Prod
+       run: sudo npm build --prod
      - name: Run Deploy 
        run: firebse deploy
        
