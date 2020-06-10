@@ -20,8 +20,7 @@ jobs:
     
     steps:
      
-     - name: Initialize Node
-       run: sudo npm init
+     
      - name: Removing package-lock file
        run: rm -rf package-lock.json
      - name: Install Dependencies
