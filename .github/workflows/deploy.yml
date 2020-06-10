@@ -27,7 +27,7 @@ jobs:
      - name: Install Dependencies
        run: sudo npm install
      - name: Run Deploy 
-       run: sudo npm run deploy
+       run: firebse deploy
        
     env:
       FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
