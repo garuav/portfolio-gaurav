@@ -21,16 +21,15 @@ jobs:
     steps:
      
      - name: Checkout Repo
-       uses: actions/checkout@master
+       uses: actions/checkout@dev_gaurav
      - name: Removing package-lock file
        run: rm -rf package-lock.json
      - name: Install Dependencies
        run: sudo npm install
      - name: Build Prod
        run: sudo npm build:prod
-     - uses: w9jds/firebase-action@master
-       with:
-        args: deploy --only hosting
+     - name: Deploy Project 
+       run: firebase deploy --project portfolio-3881c --only hosting
        
     env:
       FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
