@@ -20,7 +20,7 @@ jobs:
     
     steps:
      - name: Working Directory
-       working-directory: ../
+      
        run:
         echo $PATH; 
        
