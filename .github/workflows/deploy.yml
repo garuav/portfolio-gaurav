@@ -19,6 +19,11 @@ jobs:
         node-version: [10.x]
     
     steps:
+     - name: Working Directory
+       working-directory: ../
+       run:
+        echo $PATH; 
+       
      
      
      - name: Removing package-lock file
@@ -30,7 +35,7 @@ jobs:
      - name: Install Firebase tools
        run: sudo npm install --global firebase-tools
      - name: Change path
-       working-directory: ./src/
+       working-directory: ../src/
      - name: Deploy Project 
        run: firebase deploy --token $secrets.FIREBASE_TOKEN       
     env:
