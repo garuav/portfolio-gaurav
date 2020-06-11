@@ -20,8 +20,7 @@ jobs:
     
     steps:
      - name: Working Directory
-       run:
-        echo $PATH; 
+       run: echo $PATH; 
      - name: Removing package-lock file
        run: rm -rf package-lock.json
      - name: Install Dependencies
