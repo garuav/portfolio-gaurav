@@ -22,7 +22,7 @@ jobs:
      - name: Working Directory
        run: echo $PATH; 
        shell: bash
-       working-directory: src
+       working-directory: ../
      - name: Removing package-lock file
        run: rm -rf package-lock.json
      - name: Install Dependencies
