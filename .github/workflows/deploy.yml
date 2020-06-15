@@ -19,9 +19,8 @@ jobs:
         node-version: [10.x]
     
     steps:
-     - name: npm CI
-       working-directory: ./home/
      - name: Removing package-lock file
+       working-directory: ./home/
        run: rm -rf package-lock.json
      - name: Install Dependencies
        run: sudo npm install
