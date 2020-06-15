@@ -19,8 +19,7 @@ jobs:
         node-version: [10.x]
     
     steps:
-    
-      
+     - uses: HOME
      - name: Removing package-lock file
        run: rm -rf package-lock.json
      - name: Install Dependencies
@@ -31,7 +30,6 @@ jobs:
        run: sudo npm install --global firebase-tools
      - name: Change path
        shell: bash
-       working-directory: ./
      - name: Deploy Project 
        run: firebase deploy --token $secrets.FIREBASE_TOKEN       
     env:
