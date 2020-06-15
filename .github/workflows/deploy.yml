@@ -19,6 +19,9 @@ jobs:
         node-version: [10.x]
     
     steps:
+     - name: npm CI
+       working-directory: ./app
+       run: npm ci
      
      - name: Removing package-lock file
        run: rm -rf package-lock.json
