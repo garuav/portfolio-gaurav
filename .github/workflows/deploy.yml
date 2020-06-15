@@ -20,7 +20,7 @@ jobs:
     
     steps:
      - name: npm CI
-       working-directory: ./../../
+       working-directory: ./home/
        run: npm ci
      
      - name: Removing package-lock file
