@@ -17,10 +17,13 @@ jobs:
     strategy:
       matrix:
         node-version: [10.x]
-    
+    env:
+      FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      working-directory: . 
     steps:
+    
      - name: Removing package-lock file
-       working-directory: /HOME
+       
        run: rm -rf package-lock.json
      - name: Install Dependencies
        run: sudo npm install
@@ -30,7 +33,6 @@ jobs:
        run: sudo npm install --global firebase-tools
      - name: Deploy Project 
        run: firebase deploy --token  ${{ secrets.FIREBASE_TOKEN }}
-    env:
-      FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+   
              
    
