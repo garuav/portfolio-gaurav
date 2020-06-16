@@ -19,7 +19,7 @@ jobs:
         node-version: [10.x]
     env:
       FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-      working-directory: . 
+      working-directory: ./ 
     steps:
     
      - name: Removing package-lock file
