@@ -27,7 +27,7 @@ jobs:
        run: sudo npm install
      - name: Build Prod
        run: sudo npm build --prod
-       working-directory: dist/portfolio-gaurav
+       working-directory: ./dist/portfolio-gaurav/
      - name: Install Firebase tools
        run: sudo npm install --global firebase-tools
      - name: Deploy Project 
