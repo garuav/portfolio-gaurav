@@ -9,6 +9,8 @@ on:
     branches: [dev_gaurav]
   push:
     branches: [ dev_gaurav ]
+    paths: 
+      - './'
 
 jobs:
   build:
