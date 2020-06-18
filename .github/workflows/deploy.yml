@@ -10,7 +10,7 @@ on:
   push:
     branches: [ dev_gaurav ]
     paths: 
-      - './'
+      - HOME
 
 jobs:
   build:
