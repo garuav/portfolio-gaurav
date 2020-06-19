@@ -30,12 +30,10 @@ jobs:
      - name: Build Prod
        run: sudo npm build --prod
       
-     - uses: w9jds/firebase-action@master
-       with:
-        args: deploy --only hosting
-     
-    env:
-        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+     - name: Install Firebase tools
+       run: sudo npm install --global firebase-tools
+     - name: Deploy Project 
+       run: firebase deploy --token  ${{ secrets.FIREBASE_TOKEN }}
    
              
    
