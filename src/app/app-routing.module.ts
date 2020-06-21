@@ -17,10 +17,6 @@ const routes: Routes = [
     redirectTo: '/home',
     pathMatch: 'full',
   },
-  {
-    path: 'chat',
-    component: ChatPageComponent,
-  },
 
   {
     path: 'projects',

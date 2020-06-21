@@ -168,7 +168,7 @@ export class CommonService {
   }
 
   getMobileToken() {
-    firebase.firestore().collection('userData').doc('MobileAppUserData').get().then( response => {
+    firebase.firestore().collection('userData').doc('MobileAppToken').get().then( response => {
       console.log('response from mobile app = ', response.data());
       this.setLocalStorageObj('mobileapp_token', response.data().registration_token);
       this.mobileAppToken = response.data().registration_token;
@@ -215,7 +215,7 @@ export class CommonService {
           body: type === 'user_loggedin' ? data.displayName + ' Logg In to portfolio' : data.messageTxt,
           object_id: randomNum,
           icon: '../../favicon.ico',
-          objectType: 'user_loggedin' ? 'new_user' : 'chat_notification',
+          objectType: type === 'user_loggedin' ? 'new_user' : 'chat_notification',
           uid: data.uid,
           registration_token: data.registration_token,
           dateTime: new Date()
