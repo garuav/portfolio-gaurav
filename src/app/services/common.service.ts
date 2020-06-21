@@ -19,7 +19,7 @@ export class CommonService {
   constructor(private sw: SwPush, private http: HttpClient) {}
   googleLogin() {
     const provider = new firebase.auth.GoogleAuthProvider();
-    console.log('provider= ', provider);
+    // console.log('provider= ', provider);
     // tslint:disable-next-line:variable-name
     const registration_token = this.getLocalStorageObj('registration_token');
     firebase
@@ -30,7 +30,7 @@ export class CommonService {
         if (result && result.additionalUserInfo && result.additionalUserInfo.isNewUser) {
           const token = result.credential.accessToken;
           // The signed-in user info.
-          console.log('result = ', result);
+          // console.log('result = ', result);
           const user = result.user;
           const temp: any = {
             displayName: user.displayName,
@@ -44,7 +44,7 @@ export class CommonService {
           this.loginLogoutEvents(true);
           this.saveUser(temp).then(res => {
             this.sendNotification('user_loggedin', temp).subscribe(( response: any) => {
-              console.log('response = ', response);
+              // console.log('response = ', response);
             }, error => {
               console.log('error = ', error);
             });
@@ -53,12 +53,12 @@ export class CommonService {
           });
         } else {
           this.saveDataToUsersCollection('registered').then(response => {
-            console.log('saved user to collections = ', response);
+            // console.log('saved user to collections = ', response);
           }).catch(error => {
             console.log('error  collections = ', error);
           });
           this.getDataIfUserExists(result.user.uid).then(res => {
-            console.log('response of exsisitng user = ', res.val());
+            // console.log('response of exsisitng user = ', res.val());
             const user = {
               displayName: res.val().displayName,
               email: res.val().email,
@@ -93,7 +93,7 @@ export class CommonService {
   }
   // tslint:disable-next-line:ban-types
   setLocalStorageObj(key: string, value): void {
-    console.log('key = ', key, ' value = ', value);
+    // console.log('key = ', key, ' value = ', value);
     localStorage.setItem(key, JSON.stringify(value));
     // console.log(JSON.parse(window.localStorage.getItem(key)));
   }
@@ -118,9 +118,9 @@ export class CommonService {
 
   // firebase save data to DB--start
   saveUser(loginData) {
-    console.log('loginData = ', loginData);
+    // console.log('loginData = ', loginData);
     this.saveDataToUsersCollection('registered').then(response => {
-      console.log('saved user to collections = ', response);
+      // console.log('saved user to collections = ', response);
     }).catch(error => {
       console.log('error  collections = ', error);
     });
@@ -141,7 +141,7 @@ export class CommonService {
       Notification.requestPermission().then(res => {
       messaging.usePublicVapidKey(pushCertificateKey);
       messaging.getToken().then((token: any) => {
-        console.log('token = ', token);
+        // console.log('token = ', token);
         this.setLocalStorageObj('registration_token', token);
         if (this.getLocalStorageObj('loginUserData')) {
           this.updateDatabseData('registration_token', token);
@@ -157,7 +157,7 @@ export class CommonService {
   async onTokenRefresh() {
     const messaging =  firebase.messaging();
     await messaging.onTokenRefresh((token: any) => {
-      console.log('token = ', token);
+      // console.log('token = ', token);
       this.setLocalStorageObj('registration_token', token);
       if (this.getLocalStorageObj('loginUserData')) {
         this.updateDatabseData('registration_token', token);
@@ -169,7 +169,7 @@ export class CommonService {
 
   getMobileToken() {
     firebase.firestore().collection('userData').doc('MobileAppToken').get().then( response => {
-      console.log('response from mobile app = ', response.data());
+      // console.log('response from mobile app = ', response.data());
       this.setLocalStorageObj('mobileapp_token', response.data().registration_token);
       this.mobileAppToken = response.data().registration_token;
       }).catch(error => { 
@@ -182,7 +182,7 @@ export class CommonService {
       const messaging =  firebase.messaging();
       navigator.serviceWorker.register('ngsw-worker.js', {scope: '/'})
       .then((registration) => {
-        console.log('registration = ', registration);
+        // console.log('registration = ', registration);
         messaging.useServiceWorker(registration);
       });
     } else {
@@ -190,12 +190,12 @@ export class CommonService {
       }
   }
   updateDatabseData(key: string, value: any) {
-      console.log('update DB key === ', key, ' value = ', value);
+      // console.log('update DB key === ', key, ' value = ', value);
       const loginUserInfo = this.getLocalStorageObj('loginUserData');
       loginUserInfo[key] = value;
       firebase.database().refFromURL('https://portfolio-3881c.firebaseio.com/' + loginUserInfo.uid).child(key).set(value)
       .then(res => {
-        console.log('update user data res = ', res);
+        // console.log('update user data res = ', res);
         }).catch(error => {
           console.log('update data error = ', error);
         });
@@ -206,7 +206,7 @@ export class CommonService {
         Authorization: `key=${serverKey}`,
         'Content-Type': 'application/json'
       });
-      console.log('headers = ', header);
+      // console.log('headers = ', header);
       const randomNum = Math.round(Math.random() * (99999 - 0 + 1)) + 0;
       const payload = {
         registration_ids: [this.mobileAppToken],
@@ -245,7 +245,7 @@ export class CommonService {
   }
   saveContactData(data) {
     this.saveDataToUsersCollection('contacted').then(response => {
-      console.log('saved user to collections = ', response);
+      // console.log('saved user to collections = ', response);
     }).catch(error => {
       console.log('error  collections = ', error);
     });

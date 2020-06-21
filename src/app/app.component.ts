@@ -30,11 +30,11 @@ export class AppComponent implements OnInit, AfterViewInit {
     private swPush: SwPush
   ) {
     this.commonService.loginLogoutSubjectObservable.subscribe(res => {
-      console.log('isLogin = ', res);
+      // console.log('isLogin = ', res);
       if (!res) {
        this.showChatComponent = false;
        this.swPush.unsubscribe().then(response => {
-         console.log('unsubscribing notifications = ', response);
+        //  console.log('unsubscribing notifications = ', response);
        }).catch(error => {
         console.log('error notifications = ', error);
 
@@ -43,7 +43,7 @@ export class AppComponent implements OnInit, AfterViewInit {
          this.commonService.onTokenRefresh();
          this.commonService.getMobileToken();
          this.swPush.requestSubscription({serverPublicKey: pushCertificateKey}).then(response => {
-          console.log('response from requestSubscription  = ', response);
+          // console.log('response from requestSubscription  = ', response);
         }).catch(error => {
           console.log('from requestSubscription  = ', error);
         });
@@ -55,7 +55,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     if (window.location.href.includes('gauravgithub')) {
       setTimeout(() => {
         this.commonService.saveDataToUsersCollection('visits').then(response => {
-          console.log('saved user to collections = ', response);
+          // console.log('saved user to collections = ', response);
         }).catch(error => {
           console.log('error  collections = ', error);
         });
@@ -77,17 +77,17 @@ export class AppComponent implements OnInit, AfterViewInit {
  async initFirebase() {
     firebase.initializeApp(firebaseInit);
     await this.swPush.requestSubscription({serverPublicKey: pushCertificateKey}).then(res => {
-      console.log('response from requestSubscription  = ', res);
+      // console.log('response from requestSubscription  = ', res);
     }).catch(error => {
       console.log('from requestSubscription  = ', error);
     });
     await this.swPush.messages.subscribe((res) => {
-      console.log('on Notification = ', res);
+      // console.log('on Notification = ', res);
     }, error => {
       console.log('on Notification error = ', error);
     });
     await this.swPush.notificationClicks.subscribe(response => {
-      console.log('on notification click = ', response);
+      // console.log('on notification click = ', response);
       if (this.commonService.getLocalStorageObj('loginUserData')) {
         this.showChatComponent = true;
       }
@@ -102,18 +102,18 @@ export class AppComponent implements OnInit, AfterViewInit {
     );
   }
   headerOutputEvents(event) {
-    console.log('event = ', event);
+    // console.log('event = ', event);
     if (event && event === 'login') {
       this.loginData = this.commonService.getLocalStorageObj('loginUserData');
-      console.log('this.loginData', this.loginData);
+      // console.log('this.loginData', this.loginData);
       if (this.loginData) {
       } else {
-        console.log('else block = ', this.loginData);
+        // console.log('else block = ', this.loginData);
 
         const loginModalRef = this.modalService.open(LoginComponent);
         loginModalRef.result
           .then(res => {
-            console.log('res = ', res);
+            // console.log('res = ', res);
           })
           .catch(err => {
             console.log('err = ', err);
@@ -125,7 +125,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
   }
   projectViewEvents(event) {
-    console.log('event = ', event);
+    // console.log('event = ', event);
   }
   chatPage() {
     this.loginData = this.commonService.getLocalStorageObj('loginUserData');
@@ -136,7 +136,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       const loginModalRef = this.modalService.open(LoginComponent);
       loginModalRef.result
           .then(res => {
-            console.log('res = ', res);
+            // console.log('res = ', res);
             this.showChatComponent = true;
             // this.commonService.chatPageEvents(true);
           })
