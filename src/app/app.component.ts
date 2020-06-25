@@ -2,6 +2,7 @@ import {
   Component,
   OnInit,
   AfterViewInit,
+  HostListener,
 } from '@angular/core';
 import * as firebase from 'firebase/app';
 import { firebaseInit, pushCertificateKey } from '../common.constants';
@@ -73,6 +74,19 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.commonService.getMobileToken();
      }
     }, 500);
+  }
+  @HostListener('document:click', ['$event'])
+  click(event) {
+      try {
+          if (!event.target.className.includes('chat-page-icon') && !event.target.className.includes('intro-div') &&
+           !event.target.className.includes('fa fa-comment') ) {
+            this.showChatComponent = this.showChatMessageDiv = false;
+          } else if (event.target.className.includes('fa fa-comment') || event.target.className.includes('chat-page-icon')) {
+            this.showChatMessageDiv = false;
+          }
+      } catch (error) {
+          console.log('error = ', error);
+      }
   }
  async initFirebase() {
     firebase.initializeApp(firebaseInit);
