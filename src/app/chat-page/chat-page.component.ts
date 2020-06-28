@@ -86,4 +86,7 @@ export class ChatPageComponent implements OnInit {
       this.loadingMsgs = false;
     });
   }
+  closeChatPanel() {
+    this.commonService.chatPageEvents();
+  }
 }

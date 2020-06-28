@@ -50,6 +50,9 @@ export class AppComponent implements OnInit, AfterViewInit {
         });
       }
     });
+    this.commonService.chatPageCloseSubjectObservable.subscribe(() => {
+      this.showChatComponent = false;
+    });
   }
   ngOnInit() {
     this.initFirebase();
