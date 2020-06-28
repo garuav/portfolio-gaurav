@@ -1,4 +1,11 @@
 <div class="chat-page" >
+    <div class="chat-page-header">
+        <h5>Chat With Gaurav</h5>
+        <a (click)="closeChatPanel()">
+            <i class="fa fa-times" ></i>
+
+        </a>
+    </div>
     <ng-container *ngIf="!loadingMsgs; else LoadingMessageBlock">
         <div class="messages-list" #ChatElement>
             <div class="messages-row" *ngFor="let item of messageList;">

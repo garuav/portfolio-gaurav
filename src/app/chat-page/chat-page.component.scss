@@ -10,6 +10,25 @@
     flex-flow: column;
     justify-content: flex-end;
     overflow-y: auto;
+    .chat-page-header{
+        min-height: 3rem;
+        position: sticky;
+        background: #343535;
+        margin-bottom: .4rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        h5 {
+            color: #fff;
+            margin: 0;
+            padding-left: 1rem;
+        }
+        i {
+            color: #fff;
+            font-size: 2rem;
+            padding-right: .5rem;
+        }
+    }
     // media query for mobile devices--start
         @media screen and  (max-width: 468px){
             width: 95%;
