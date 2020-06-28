@@ -15,6 +15,8 @@ import { serverKey, pushCertificateKey } from 'src/common.constants';
 export class CommonService {
   private loginLogoutSubject = new Subject<boolean>();
   loginLogoutSubjectObservable = this.loginLogoutSubject.asObservable();
+  private chatPageCloseSubject = new Subject<boolean>();
+  chatPageCloseSubjectObservable = this.chatPageCloseSubject.asObservable();
   mobileAppToken;
   constructor(private sw: SwPush, private http: HttpClient) {}
   googleLogin() {
@@ -292,5 +294,8 @@ export class CommonService {
     //   console.log('error= ', error);
 
     //   });
+  }
+  chatPageEvents() {
+    this.chatPageCloseSubject.next(true);
   }
 }
