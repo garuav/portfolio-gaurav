@@ -144,6 +144,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
   chatPage() {
     this.loginData = this.commonService.getLocalStorageObj('loginUserData');
+    this.showChatMessageDiv  = false;
     if (this.loginData) {
       this.showChatComponent = !this.showChatComponent;
     } else {
