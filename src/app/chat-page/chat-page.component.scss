@@ -10,24 +10,27 @@
     flex-flow: column;
     justify-content: flex-end;
     overflow-y: auto;
+    animation: slideInUp;
+    animation-duration: 500ms;
     .chat-page-header{
-        min-height: 3rem;
-        position: sticky;
-        background: #343535;
-        margin-bottom: .4rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        h5 {
-            color: #fff;
-            margin: 0;
-            padding-left: 1rem;
+        position: absolute;
+        top: 0.2rem;
+        right: 0.2rem;
+        a {
+            background-color: #727171;
+            min-width: 2rem;
+            min-height: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            cursor: pointer;
+            i {
+                color: #fff;
+                font-size: 1.2rem;
+            }
         }
-        i {
-            color: #fff;
-            font-size: 2rem;
-            padding-right: .5rem;
-        }
+        
     }
     // media query for mobile devices--start
         @media screen and  (max-width: 468px){
@@ -71,6 +74,7 @@
         height: 100%;
         overflow-y: scroll;
         scroll-behavior: smooth;
+        margin-top: 2.5rem;
         .messages-row{
             display: flex;
             flex-flow: column;
