@@ -4,6 +4,9 @@
   align-items: center;
   height: 100%;
   padding: 5rem;
+  @media screen and (max-width:768px){
+    padding: 1.2rem;
+  }
   .about-me-block {
     background: #343535;
     padding: 1rem;
