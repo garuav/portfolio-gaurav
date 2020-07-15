@@ -4,6 +4,23 @@
     align-items: center;
     height: calc(100% - 50px);
     flex-flow: column;
+    .popover-msg-div{
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        padding: 1rem;
+        min-width: 35%;
+        border-radius: .5rem;
+        p {
+            color: #ffffff;
+        }
+        &.error-popover{
+            background-color: #e55050;
+        }
+        &.success-popover{
+            background-color: #46b346;
+        }
+    }
     .card {
         width: 50%;
         background-color: #4f4f4f;

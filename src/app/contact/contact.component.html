@@ -1,4 +1,9 @@
 <div class="contact">
+  <ng-container *ngIf="response?.isSubmitted">
+    <div [class]=" response.isSuccess ? 'success-popover popover-msg-div' : 'error-popover popover-msg-div'">
+      <p>{{response?.message}}</p> 
+     </div>
+  </ng-container>
     <div class="card ">
         <form [formGroup]="contactForm" (ngSubmit)="saveContactForm()">
         <div class="card-header">
@@ -10,7 +15,7 @@
                   <input type="text" class="form-control" placeholder="Name" formControlName="name" [ngClass]="{'has-error':formSubmitted && contactForm.controls.name.hasError('required')}">
                 </div>
                 <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Email" formControlName="email" [ngClass]="{'has-error':formSubmitted && contactForm.controls.email.hasError('required')}">
+                    <input type="email" class="form-control" placeholder="Email" formControlName="email" [ngClass]="{'has-error':formSubmitted &&( contactForm.controls.email.hasError('required') || contactForm.controls.email?.errors?.email)}">
                   </div>
                   <div class="form-group">
                     <textarea placeholder="Message" class="form-control" formControlName="description" [ngClass]="{'has-error':formSubmitted && contactForm.controls.description.hasError('required')}"></textarea>
