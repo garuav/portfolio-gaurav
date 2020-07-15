@@ -76,6 +76,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.commonService.getRegistrationToken();
       this.commonService.getMobileToken();
      }
+     this.commonService.getMobileToken();
     }, 500);
   }
   // @HostListener('document:click', ['$event'])
