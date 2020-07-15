@@ -219,7 +219,7 @@ export class CommonService {
           icon: '../../favicon.ico',
           objectType: type === 'user_loggedin' ? 'new_user' : 'chat_notification',
           uid: data.uid,
-          registration_token: data.registration_token,
+          registration_token: data.registration_token || '',
           dateTime: new Date()
         },
         content_available: true
