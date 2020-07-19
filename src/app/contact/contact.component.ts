@@ -32,18 +32,15 @@ export class ContactComponent implements OnInit {
     });
   }
   saveContactForm() {
-    // console.log('contactForm = ', this.contactForm);
     this.formSubmitted = true;
     if (this.formSubmitted && this.contactForm.valid) {
       this.commonService.sendNotification('contact', this.contactForm.value).subscribe(response => {
-        // console.log('response from send notification = ', response);
         const contactValue = this.contactForm.value;
         if (this.loginData && this.loginData.uid) {
           contactValue.uid = this.loginData.uid;
 
         }
         this.commonService.saveContactData(contactValue).then(res => {
-        // console.log('response from save contact = ', res);
         this.popoverData(false, true);
         this.formSubmitted = false;
         this.createForm();

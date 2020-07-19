@@ -32,10 +32,8 @@ export class ChatPageComponent implements OnInit {
         registration_token: this.loggedInUser.registration_token,
         dateTime: new Date()
       };
-      // console.log(' param = ',  param);
       this.disableSendButton = true;
       this.commonService.sendNotification('chat', param).subscribe(res => {
-        // console.log('message send = ', res);
         this.disableSendButton = false;
         const obj = {
             sender: 'user',
@@ -43,7 +41,6 @@ export class ChatPageComponent implements OnInit {
             dateTime: new Date()
         };
         this.commonService.saveChatMessages(obj).then(response => {
-          // console.log('response from save chat message = ', response);
         }).catch(error => {
           console.log('error = ', error);
         });
@@ -59,9 +56,7 @@ export class ChatPageComponent implements OnInit {
     this.loadingMsgs = true;
     this.commonService.getAllMessages().on('value', res => {
       this.messageList = [];
-      // console.log('response from all messages = ', res.val());
       res.forEach(element => {
-        // console.log('element = ', element.val());
         // this.messageList.push(element.val());
         if (element.val().dateTime) {
         const date = element.val().dateTime;
@@ -75,7 +70,6 @@ export class ChatPageComponent implements OnInit {
         } else {
           this.messageList.push(element.val());
         }
-        // console.log(' this.messageList = ', this.messageList);
       }
       });
       this.loadingMsgs = false;
