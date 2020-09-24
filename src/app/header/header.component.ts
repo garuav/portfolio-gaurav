@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit {
   @Output() headerOutputEvents = new EventEmitter();
   constructor(private commonService: CommonService) {
     this.commonService.loginLogoutSubjectObservable.subscribe(res => {
-      console.log('isLogin = ', res);
+      // console.log('isLogin = ', res);
       if (res) {
         this.getCheckLoggedInUser();
       }
