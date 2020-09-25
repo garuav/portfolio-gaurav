@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('this.activeMiodal = ', this.activeModal);
+    // console.log('this.activeMiodal = ', this.activeModal);
   }
   signUp(type) {
     switch (type) {
